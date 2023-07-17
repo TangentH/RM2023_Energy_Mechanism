@@ -18,7 +18,7 @@ typedef enum{
     LEAF_4,
 } LED_Leaf_Name_t;
 
-static RGB_t leds[LED_NUM];    //存放led点亮数据的地方
+static RGB_t leds[120];    //存放led点亮数据的地方
 static RGB_t red = {255, 0, 0};
 static RGB_t blue = {0, 0, 255};
 static RGB_t dim_red = {50, 0, 0};  //用于测试，颜色调暗了一些，防止太亮眼

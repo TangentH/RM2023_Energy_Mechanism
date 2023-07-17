@@ -30,7 +30,18 @@ void ws2812b_Init(void);
 
 int ws2812b_IsReady(void);
 
-void ws2812b_SendRGB(RGB_t *rgb, unsigned count);
-void ws2812b_SendHSV(HSV_t *hsv, unsigned count);
+void ws2812b_PA1_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_PA1_SendHSV(HSV_t *hsv, unsigned count);
 
+void ws2812b_PA2_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_PA2_SendHSV(HSV_t *hsv, unsigned count);
+
+void ws2812b_PA6_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_PA6_SendHSV(HSV_t *hsv, unsigned count);
+
+void ws2812b_PB1_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_PB1_SendHSV(HSV_t *hsv, unsigned count);
+
+void ws2812b_PA8_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_PA8_SendHSV(HSV_t *hsv, unsigned count);
 #endif //__WS2812B_H
