@@ -29,5 +29,6 @@
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
 .\objects\main.o: .\System\Delay.h
+.\objects\main.o: .\Hardware\led.h
 .\objects\main.o: .\Hardware\ws2812b.h
 .\objects\main.o: .\Hardware\bitmap.h

@@ -718,6 +718,21 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\ws2812b_conf.h</FilePath>
             </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\led.h</FilePath>
+            </File>
+            <File>
+              <FileName>pattern.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\pattern.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
