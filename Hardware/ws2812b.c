@@ -680,56 +680,56 @@ inline int ws2812b_IsReady(void)
 }
 
 //------------------------------------------------------------
-void ws2812b_PA1_SendRGB(RGB_t *rgb, unsigned count)
+void ws2812b_H3_SendRGB(RGB_t *rgb, unsigned count)
 {
     DMA1_CH7Send(&SrcFilterRGB, rgb, count);
 }
 
-void ws2812b_PA1_SendHSV(HSV_t *hsv, unsigned count)
+void ws2812b_H3_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH7Send(&SrcFilterHSV, hsv, count);
 }
 
 //------------------------------------------------------------
-void ws2812b_PA2_SendRGB(RGB_t *rgb, unsigned count)
+void ws2812b_H4_SendRGB(RGB_t *rgb, unsigned count)
 {
     DMA1_CH1Send(&SrcFilterRGB, rgb, count);
 }
 
-void ws2812b_PA2_SendHSV(HSV_t *hsv, unsigned count)
+void ws2812b_H4_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH1Send(&SrcFilterHSV, hsv, count);
 }
 
 //------------------------------------------------------------
-void ws2812b_PA6_SendRGB(RGB_t *rgb, unsigned count)
+void ws2812b_H6_SendRGB(RGB_t *rgb, unsigned count)
 {
     DMA1_CH6Send(&SrcFilterRGB, rgb, count);
 }
 
-void ws2812b_PA6_SendHSV(HSV_t *hsv, unsigned count)
+void ws2812b_H6_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH6Send(&SrcFilterHSV, hsv, count);
 }
 
 //------------------------------------------------------------
-void ws2812b_PB1_SendRGB(RGB_t *rgb, unsigned count)
+void ws2812b_H7_SendRGB(RGB_t *rgb, unsigned count)
 {
     DMA1_CH3Send(&SrcFilterRGB, rgb, count);
 }
 
-void ws2812b_PB1_SendHSV(HSV_t *hsv, unsigned count)
+void ws2812b_H7_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH3Send(&SrcFilterHSV, hsv, count);
 }
 
 //------------------------------------------------------------
-void ws2812b_PA8_SendRGB(RGB_t *rgb, unsigned count)
+void ws2812b_H8_SendRGB(RGB_t *rgb, unsigned count)
 {
     DMA1_CH2Send(&SrcFilterRGB, rgb, count);
 }
 
-void ws2812b_PA8_SendHSV(HSV_t *hsv, unsigned count)
+void ws2812b_H8_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH2Send(&SrcFilterHSV, hsv, count);
 }

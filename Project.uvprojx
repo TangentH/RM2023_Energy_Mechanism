@@ -663,6 +663,26 @@
               <FileType>5</FileType>
               <FilePath>.\System\Delay.h</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>rand.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\rand.c</FilePath>
+            </File>
+            <File>
+              <FileName>rand.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\rand.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
