@@ -3606,9 +3606,9 @@
       <ActiveTab>12</ActiveTab>
       <Doc>
         <Name>.\User\main.c</Name>
-        <ColumnNumber>1</ColumnNumber>
+        <ColumnNumber>14</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>6</CurrentLine>
+        <CurrentLine>7</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3679,8 +3679,8 @@
       <Doc>
         <Name>.\Hardware\ws2812b.c</Name>
         <ColumnNumber>0</ColumnNumber>
-        <TopLine>679</TopLine>
-        <CurrentLine>680</CurrentLine>
+        <TopLine>748</TopLine>
+        <CurrentLine>760</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3705,18 +3705,18 @@
       </Doc>
       <Doc>
         <Name>.\Hardware\led.h</Name>
-        <ColumnNumber>32</ColumnNumber>
-        <TopLine>6</TopLine>
-        <CurrentLine>11</CurrentLine>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>1</TopLine>
+        <CurrentLine>7</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\Hardware\led.c</Name>
-        <ColumnNumber>58</ColumnNumber>
-        <TopLine>254</TopLine>
-        <CurrentLine>290</CurrentLine>
+        <ColumnNumber>37</ColumnNumber>
+        <TopLine>1</TopLine>
+        <CurrentLine>18</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	LED_Init(DebugState);
+	LED_Init(RedState);
 	
 	while (1)
 	{

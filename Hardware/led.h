@@ -3,7 +3,7 @@
 
 #include "ws2812b.h"
 
-#define LED_NUM (1586)    // 32*8+256+50+1024
+#define LED_NUM (1585)    // 32*8+255+50+1024
 
 typedef enum { LEAF_OFF, LEAF_STRIKING, LEAF_STRUCK} LED_Leaf_Mode_t; //对于单片LED的状态，分为四种
 //              关闭      打击中          击中

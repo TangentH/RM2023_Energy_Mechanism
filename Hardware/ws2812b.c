@@ -81,6 +81,7 @@ static volatile int DMA1_CH1Busy;
 static volatile int DMA1_CH6Busy;
 static volatile int DMA1_CH3Busy;
 static volatile int DMA1_CH2Busy;
+static volatile int DMA1_CH5Busy;
 
 
 static PWM_t DMABuffer[WS2812B_BUFFER_SIZE];
@@ -526,6 +527,80 @@ void DMA1_Channel2_IRQHandler(void)
 }
 
 //------------------------------------------------------------
+static void DMA1_CH5Send(SrcFilter_t *filter, void *src, unsigned count)
+{
+    if (!DMA1_CH5Busy)
+    {
+        DMA1_CH5Busy = 1;
+
+        DMAFilter = filter;
+        DMASrc = src;
+        DMACount = count;
+
+        PWM_t *pwm = DMABuffer;
+        PWM_t *end = &DMABuffer[WS2812B_BUFFER_SIZE];
+
+        // Start sequence
+        SrcFilterNull(NULL, &pwm, NULL, WS2812B_START_SIZE);
+
+        // RGB PWM data
+        DMAFilter(&DMASrc, &pwm, &DMACount, MIN(DMACount, end - pwm));
+
+        // Rest of buffer
+        if (pwm < end)
+            SrcFilterNull(NULL, &pwm, NULL, end - pwm);
+
+        // Start transfer
+        DMA_SetCurrDataCounter(DMA1_Channel5, sizeof(DMABuffer) / sizeof(uint16_t));
+
+        TIM_Cmd(TIM2, ENABLE);
+        DMA_Cmd(DMA1_Channel5, ENABLE);
+    }
+}
+
+static void DMA1_CH5SendNext(PWM_t *pwm, PWM_t *end)
+{
+    if (!DMAFilter)
+    {
+        // Stop transfer
+        TIM_Cmd(TIM2, DISABLE);
+        DMA_Cmd(DMA1_Channel5, DISABLE);
+
+        DMA1_CH5Busy = 0;
+    }
+    else if (!DMACount)
+    {
+        // Rest of buffer
+        SrcFilterNull(NULL, &pwm, NULL, end - pwm);
+
+        DMAFilter = NULL;
+    }
+    else
+    {
+        // RGB PWM data
+        DMAFilter(&DMASrc, &pwm, &DMACount, MIN(DMACount, end - pwm));
+
+        // Rest of buffer
+        if (pwm < end)
+            SrcFilterNull(NULL, &pwm, NULL, end - pwm);
+    }
+}
+
+void DMA1_Channel5_IRQHandler(void)
+{
+    if (DMA_GetITStatus(DMA1_IT_HT5) != RESET)
+    {
+        DMA_ClearITPendingBit(DMA1_IT_HT5);
+        DMA1_CH5SendNext(DMABuffer, &DMABuffer[WS2812B_BUFFER_SIZE / 2]);
+    }
+
+    if (DMA_GetITStatus(DMA1_IT_TC5) != RESET)
+    {
+        DMA_ClearITPendingBit(DMA1_IT_TC5);
+        DMA1_CH5SendNext(&DMABuffer[WS2812B_BUFFER_SIZE / 2], &DMABuffer[WS2812B_BUFFER_SIZE]);
+    }
+}
+//------------------------------------------------------------
 // Interface
 //------------------------------------------------------------
 
@@ -547,7 +622,7 @@ void ws2812b_Init(void)
 
     GPIO_StructInit(&GPIO_InitStruct);
 
-    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_6 | GPIO_Pin_8;
+    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_6 | GPIO_Pin_8;
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
 
@@ -602,6 +677,8 @@ void ws2812b_Init(void)
     TIM_OC1Init(TIM1, &TIM_OCInitStruct);
     TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
 
+    TIM_OC1Init(TIM2, &TIM_OCInitStruct);
+    TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
     // Initialize DMA channel
     DMA_InitTypeDef DMA_InitStruct;
 
@@ -636,6 +713,9 @@ void ws2812b_Init(void)
     DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t) & (TIM1->CCR1);
     DMA_Init(DMA1_Channel2, &DMA_InitStruct);
 
+    DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t) & (TIM2->CCR1);
+    DMA_Init(DMA1_Channel5, &DMA_InitStruct);
+
 
     
 
@@ -646,6 +726,7 @@ void ws2812b_Init(void)
     TIM_DMACmd(TIM3, TIM_DMA_CC1, ENABLE);
     TIM_DMACmd(TIM3, TIM_DMA_CC4, ENABLE);
     TIM_DMACmd(TIM1, TIM_DMA_CC1, ENABLE);
+    TIM_DMACmd(TIM2, TIM_DMA_CC1, ENABLE);
 
 
     // Initialize DMA interrupt
@@ -665,18 +746,20 @@ void ws2812b_Init(void)
     NVIC_Init(&NVIC_InitStruct);
     NVIC_InitStruct.NVIC_IRQChannel = DMA1_Channel2_IRQn;
     NVIC_Init(&NVIC_InitStruct);
-
+    NVIC_InitStruct.NVIC_IRQChannel = DMA1_Channel5_IRQn;
+    NVIC_Init(&NVIC_InitStruct);
     // Enable DMA interrupt
     DMA_ITConfig(DMA1_Channel7, DMA_IT_HT | DMA_IT_TC, ENABLE);
     DMA_ITConfig(DMA1_Channel1, DMA_IT_HT | DMA_IT_TC, ENABLE);
     DMA_ITConfig(DMA1_Channel6, DMA_IT_HT | DMA_IT_TC, ENABLE);
     DMA_ITConfig(DMA1_Channel3, DMA_IT_HT | DMA_IT_TC, ENABLE);
     DMA_ITConfig(DMA1_Channel2, DMA_IT_HT | DMA_IT_TC, ENABLE);
+    DMA_ITConfig(DMA1_Channel5, DMA_IT_HT | DMA_IT_TC, ENABLE);
 }
 
 inline int ws2812b_IsReady(void)
 {
-    return !(DMA1_CH1Busy || DMA1_CH7Busy || DMA1_CH6Busy || DMA1_CH3Busy || DMA1_CH2Busy);
+    return !(DMA1_CH1Busy || DMA1_CH7Busy || DMA1_CH6Busy || DMA1_CH3Busy || DMA1_CH2Busy || DMA1_CH5Busy);
 }
 
 //------------------------------------------------------------
@@ -732,4 +815,15 @@ void ws2812b_H8_SendRGB(RGB_t *rgb, unsigned count)
 void ws2812b_H8_SendHSV(HSV_t *hsv, unsigned count)
 {
     DMA1_CH2Send(&SrcFilterHSV, hsv, count);
+}
+
+//------------------------------------------------------------
+void ws2812b_SW1_SendRGB(RGB_t *rgb, unsigned count)
+{
+    DMA1_CH5Send(&SrcFilterRGB, rgb, count);
+}
+
+void ws2812b_SW1_SendHSV(HSV_t *hsv, unsigned count)
+{
+    DMA1_CH5Send(&SrcFilterHSV, hsv, count);
 }

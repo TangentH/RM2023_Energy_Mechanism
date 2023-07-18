@@ -44,4 +44,7 @@ void ws2812b_H7_SendHSV(HSV_t *hsv, unsigned count);
 
 void ws2812b_H8_SendRGB(RGB_t *rgb, unsigned count);
 void ws2812b_H8_SendHSV(HSV_t *hsv, unsigned count);
+
+void ws2812b_SW1_SendRGB(RGB_t *rgb, unsigned count);
+void ws2812b_SW1_SendHSV(HSV_t *hsv, unsigned count);
 #endif //__WS2812B_H

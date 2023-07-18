@@ -458,7 +458,6 @@ const unsigned char RECTANGLE_ARROWS[256] = {
 };
 
 
-
 #endif
 
 

@@ -8,7 +8,10 @@ uint8_t timeout = 0;       // 如果时间到了(2.5s)，timeout = 1，由定时
 uint8_t refresh_rectangle = 0; // 如果刷新灯板（指的是让长方形灯板里面的箭头流动起来）时间到了，refresh_rectangle = 1，由定时器中硬件中断修改
 uint8_t leaf_ring_value[5] = {0, 0, 0, 0, 0};   //取值范围0-4，分别对应2环，4环，6环，8环，10环
 static LED_Leaf_Name_t current_Refresh_Leaf = LEAF_0; // 默认为第一片叶子,表示当前在刷新的扇叶
+
 static RGB_t leds[LED_NUM];    //存放led点亮数据的地方
+static RGB_t R_logo[64];   //存放R标的数据
+
 static LED_Leaf_Mode_t leafmode[5] = {LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF}; //存放每片叶子当前的状态，默认为关闭
 static RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色（其实有后面的LED_State就可以判断了，但是为了减轻CPU负担，尽量在颜色判断上只在初始化的时候判断一次）
 static LED_State_t LED_State = RedState; //能量机关默认为红方模式
@@ -20,6 +23,12 @@ void LED_Init(LED_State_t state)
     ws2812b_Init();
     LED_State = state;
     current_color = (LED_State == RedState ? red : blue);
+
+    //pack R logo data
+    for (uint8_t i = 0; i < 64; i++)
+    {
+        R_logo[i] = current_color;
+    }
 }
 
 void LED_PackLightALLData(void)
@@ -117,19 +126,19 @@ void LED_PackFrameData1(LED_Leaf_Mode_t leafmode, RGB_t *dst)
     switch (leafmode)
     {
     case LEAF_OFF:
-        for (uint8_t i = 0; i < 136; i++)
+        for (uint8_t i = 0; i < 135; i++)
         {
             dst[i] = off;
         }
         break;
     case LEAF_STRIKING:
-        for (uint8_t i = 0; i < 136; i++)
+        for (uint8_t i = 0; i < 135; i++)
         {
             dst[i] = current_color;
         }
         break;
     case LEAF_STRUCK:
-        for (uint8_t i = 0; i < 136; i++)
+        for (uint8_t i = 0; i < 135; i++)
         {
             dst[i] = current_color;
         }
@@ -317,7 +326,7 @@ void check_LED_Status(void)
 void LED_Update(void)
 {
     check_LED_Status();
-    while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，否则可能出现数据串了的情况
+    while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，而且每次发送前都要检查一遍否则可能出现数据串了的情况
     if (LED_State == DebugState)
     {
         LED_PackLightALLData();
@@ -327,8 +336,8 @@ void LED_Update(void)
         LED_PackRectangleData(leafmode[current_Refresh_Leaf], leds);
         LED_PackStripData(leafmode[current_Refresh_Leaf], leds + 256);
         LED_PackFrameData1(leafmode[current_Refresh_Leaf], leds + 256 + 50);
-        // LED_PackTargetData(leafmode[current_Refresh_Leaf], leds);
-        LED_PackFrameData2(leafmode[current_Refresh_Leaf], leds + 256 + 50 + 136);
+        LED_PackTargetData(leafmode[current_Refresh_Leaf], leds + 256 + 50 + 135);
+        LED_PackFrameData2(leafmode[current_Refresh_Leaf], leds + 256 + 50 + 135 + 1024);
     }
     switch (current_Refresh_Leaf)
     {
@@ -356,6 +365,8 @@ void LED_Update(void)
     }
     else
     {
+		while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，而且每次发送前都要检查一遍否则可能出现数据串了的情况
+        ws2812b_SW1_SendRGB(R_logo, 64);    //R标单独发
         current_Refresh_Leaf = LEAF_0;
     }
 }
