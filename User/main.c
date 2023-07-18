@@ -5,16 +5,12 @@
 #include "rand.h"
 
 
-extern uint32_t systime_ms;
-uint8_t a=0;
-
 int main(void)
 {
-	Timer_Init();
-
+	LED_Init(DebugState);
+	
 	while (1)
 	{
-		a = rand_get(5);
-		Delay_ms(500);
+		LED_Update();
 	}
 }
