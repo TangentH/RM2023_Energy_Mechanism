@@ -20,7 +20,7 @@ typedef enum{
 } LED_Leaf_Name_t;
 
 static RGB_t leds[LED_NUM];    //存放led点亮数据的地方
-static LED_Leaf_Mode_t leafmode[5] = {LEAF_STRIKING, LEAF_STRIKING, LEAF_STRIKING, LEAF_STRIKING, LEAF_STRIKING}; //存放每片叶子当前的状态，默认为关闭
+static LED_Leaf_Mode_t leafmode[5] = {LEAF_STRUCK, LEAF_STRIKING, LEAF_STRIKING, LEAF_STRIKING, LEAF_STRIKING}; //存放每片叶子当前的状态，默认为关闭
 static const RGB_t red = {255, 0, 0};
 static const RGB_t blue = {0, 0, 255};
 static const RGB_t off = {0, 0, 0};

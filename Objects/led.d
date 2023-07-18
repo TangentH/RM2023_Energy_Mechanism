@@ -32,3 +32,4 @@
 .\objects\led.o: Hardware\ws2812b.h
 .\objects\led.o: Hardware\bitmap.h
 .\objects\led.o: Hardware\pattern.h
+.\objects\led.o: .\System\timer.h

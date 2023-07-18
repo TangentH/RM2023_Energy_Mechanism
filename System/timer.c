@@ -3,6 +3,7 @@
 uint32_t systime_ms = 0;    //两个作用：产生随机种子，生成随机数；计时2.5s
 
 extern uint8_t change_leaf;
+extern uint8_t refresh_rectangle;
 
 void Timer_Init(void)
 {
@@ -51,11 +52,15 @@ void TIM4_IRQHandler(void)
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET)
 	{
 		systime_ms++;
-        if(systime_ms == 2500)  //2.5s计时到
+        if(systime_ms == 2499)  //2.5s计时到
         {
             systime_ms = 0;
             change_leaf = 1;
         }
+		if(systime_ms % 100 == 0)   //每100ms刷新一次灯板
+		{
+			refresh_rectangle = 1;
+		}
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 	}
 }
