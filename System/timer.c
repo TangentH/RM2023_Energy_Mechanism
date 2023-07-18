@@ -1,8 +1,8 @@
 #include "stm32f10x.h"                  // Device header
 
-uint32_t systime_ms = 0;    //两个作用：产生随机种子，生成随机数；计时2.5s
+uint32_t systime_ms = 0;    //两个作用：产生随机种子，生成随机数；计时2.5s, 计时区间是0ms-2500ms（循环计时）
 
-extern uint8_t change_leaf;
+extern uint8_t timeout;
 extern uint8_t refresh_rectangle;
 
 void Timer_Init(void)
@@ -31,8 +31,8 @@ void Timer_Init(void)
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;	//因为要提高TIM的精度（中断也一定程度上提供了时钟，所以提高它的中断优先级）
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
 	NVIC_Init(&NVIC_InitStructure);
 	
 	TIM_Cmd(TIM4, ENABLE);
@@ -54,8 +54,8 @@ void TIM4_IRQHandler(void)
 		systime_ms++;
         if(systime_ms == 2499)  //2.5s计时到
         {
-            systime_ms = 0;
-            change_leaf = 1;
+			Timer_reset();
+            timeout = 1;
         }
 		if(systime_ms % 100 == 0)   //每100ms刷新一次灯板
 		{

@@ -33,3 +33,4 @@
 .\objects\led.o: Hardware\bitmap.h
 .\objects\led.o: Hardware\pattern.h
 .\objects\led.o: .\System\timer.h
+.\objects\led.o: .\System\rand.h

@@ -2,11 +2,17 @@
 #include "led.h"
 #include "pattern.h"
 #include "timer.h"
+#include "rand.h"
 
-uint8_t change_leaf = 0;       // 如果时间到了(2.5s)或者击中了，change_leaf = 1，由定时器硬件中断修改
+uint8_t timeout = 0;       // 如果时间到了(2.5s)，timeout = 1，由定时器硬件中断修改
 uint8_t refresh_rectangle = 0; // 如果刷新灯板（指的是让长方形灯板里面的箭头流动起来）时间到了，refresh_rectangle = 1，由定时器中硬件中断修改
-uint8_t leaf_ring_value[5] = {4, 0, 0, 0, 0};   //取值范围0-4，分别对应2环，4环，6环，8环，10环
+uint8_t leaf_ring_value[5] = {0, 0, 0, 0, 0};   //取值范围0-4，分别对应2环，4环，6环，8环，10环
 static LED_Leaf_Name_t current_Refresh_Leaf = LEAF_0; // 默认为第一片叶子,表示当前在刷新的扇叶
+static RGB_t leds[LED_NUM];    //存放led点亮数据的地方
+static LED_Leaf_Mode_t leafmode[5] = {LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF}; //存放每片叶子当前的状态，默认为关闭
+static RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色（其实有后面的LED_State就可以判断了，但是为了减轻CPU负担，尽量在颜色判断上只在初始化的时候判断一次）
+static LED_State_t LED_State = RedState; //能量机关默认为红方模式
+static uint8_t currentLeafStruck = 0;
 
 void LED_Init(LED_State_t state)
 {
@@ -27,7 +33,7 @@ void LED_PackLightALLData(void)
 
 void LED_PackRectangleData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
 {
-    static uint8_t count = 0;
+    static uint8_t count = 4;
     switch (leafmode)
     {
     case LEAF_OFF:
@@ -40,15 +46,15 @@ void LED_PackRectangleData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
         // 对于移动箭头，每移动4次就会回到初始位置
         if (refresh_rectangle == 1)
         {
-            count++;
+            count--;
         }
-        if (count < 4)
+        if (count > 0)
         {
             refresh_rectangle = 0; // 硬件置0(定时器中断)，软件清0
         }
-        else if (count == 4)
+        else if (count == 0)
         {
-            count = 0;
+            count = 4;
             refresh_rectangle = 0;
         }
         for (uint16_t i = 0; i < 256; i++)
@@ -258,9 +264,59 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
         }
 }
 
+//以下函数会确定当下刷新时每片叶子是什么状态，并且会修改leftmode数组和leaf_ring_value数组
+void check_LED_Status(void)
+{
+    static LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶, static变量只在第一次生成时赋值，之后这句话不会再执行
+    static uint8_t total_struck = 0; //总共击打的次数
+    //情况1：击中了
+    if(timeout == 0 && currentLeafStruck == 1)
+    {
+        Timer_reset();
+        currentLeafStruck = 0;
+        total_struck++;
+        leafmode[current_striking_leaf] = LEAF_STRUCK;
+        if(total_struck == 5)
+        {
+            total_struck = 0;
+            for(uint8_t i = 0; i < 5; i++)
+            {
+                leafmode[i] = LEAF_OFF;
+                leaf_ring_value[i] = 0;
+            }
+        }
+        while(1)
+        {
+            LED_Leaf_Name_t temp = (LED_Leaf_Name_t) rand_get(5);
+            //一直抽到没有点亮的扇叶为止
+            if(leafmode[temp] == LEAF_OFF)
+            {
+                leafmode[temp] = LEAF_STRIKING;
+                current_striking_leaf = temp;
+                break;
+            }
+        }
+    }
+    //情况2：超时（不考虑打错的情况）
+    else if(timeout == 1)
+    {
+        timeout = 0;
+        currentLeafStruck = 0;
+        total_struck = 0;
+        for(uint8_t i = 0; i < 5; i++)
+        {
+            leafmode[i] = LEAF_OFF;
+            leaf_ring_value[i] = 0;
+        }
+        LED_Leaf_Name_t temp = (LED_Leaf_Name_t) rand_get(5);
+        leafmode[temp] = LEAF_STRIKING;
+    }
+}
+
 // 以上的packData都是针对一片叶子的，现在希望连续刷新所有的叶子
 void LED_Update(void)
 {
+    check_LED_Status();
     while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，否则可能出现数据串了的情况
     if (LED_State == DebugState)
     {
@@ -268,11 +324,11 @@ void LED_Update(void)
     }
     else
     {
-        // LED_PackRectangleData(leafmode[current_Refresh_Leaf], leds);
-        // LED_PackStripData(leafmode[current_Refresh_Leaf], leds + 256);
-        // LED_PackFrameData1(leafmode[current_Refresh_Leaf], leds + 256 + 50);
-        LED_PackTargetData(leafmode[current_Refresh_Leaf], leds);
-        // LED_PackFrameData2(leafmode[current_Refresh_Leaf], leds + 256 + 50 + 136);
+        LED_PackRectangleData(leafmode[current_Refresh_Leaf], leds);
+        LED_PackStripData(leafmode[current_Refresh_Leaf], leds + 256);
+        LED_PackFrameData1(leafmode[current_Refresh_Leaf], leds + 256 + 50);
+        // LED_PackTargetData(leafmode[current_Refresh_Leaf], leds);
+        LED_PackFrameData2(leafmode[current_Refresh_Leaf], leds + 256 + 50 + 136);
     }
     switch (current_Refresh_Leaf)
     {
