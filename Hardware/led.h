@@ -3,7 +3,7 @@
 
 #include "ws2812b.h"
 
-#define LED_NUM (1585)    // 32*8+255+50+1024
+#define LED_NUM (1585)    // 32*8+50+135+1024+120
 
 typedef enum { LEAF_OFF, LEAF_STRIKING, LEAF_STRUCK} LED_Leaf_Mode_t; //对于单片LED的状态，分为四种
 //              关闭      打击中          击中
@@ -20,8 +20,8 @@ typedef enum{
 } LED_Leaf_Name_t;
 
 
-static const RGB_t red = {255, 0, 0};
-static const RGB_t blue = {0, 0, 255};
+static const RGB_t red = {185, 0, 0};   //目前发现亮度太高好像会出现电流比较大导致信号线受到干扰的情况，所以把颜色调暗了一些
+static const RGB_t blue = {0, 0, 185};
 static const RGB_t off = {0, 0, 0};
 static const RGB_t dim_red = {50, 0, 0};  //用于测试，颜色调暗了一些，防止太亮眼
 static const RGB_t dim_blue = {0, 0, 50};   //用于测试，颜色调暗了一些，防止太亮眼

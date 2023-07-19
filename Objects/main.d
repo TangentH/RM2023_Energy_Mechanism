@@ -31,3 +31,4 @@
 .\objects\main.o: .\Hardware\led.h
 .\objects\main.o: .\Hardware\ws2812b.h
 .\objects\main.o: .\Hardware\bitmap.h
+.\objects\main.o: .\Hardware\infrared.h

@@ -1,6 +1,8 @@
 #include "stm32f10x.h"                  // Device header
 
 uint32_t systime_ms = 0;    //两个作用：产生随机种子，生成随机数；计时2.5s, 计时区间是0ms-2500ms（循环计时）
+uint16_t overflow_count = 0;
+uint16_t cnt = 0;	//存CNT计数器的值
 
 extern uint8_t timeout;
 extern uint8_t refresh_rectangle;
@@ -31,8 +33,8 @@ void Timer_Init(void)
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;	//因为要提高TIM的精度（中断也一定程度上提供了时钟，所以提高它的中断优先级）
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;	//因为要提高TIM的精度（中断也一定程度上提供了时钟，所以提高它的中断优先级）
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
 	NVIC_Init(&NVIC_InitStructure);
 	
 	TIM_Cmd(TIM4, ENABLE);
@@ -49,6 +51,7 @@ void Timer_reset(void)
 //还可以在扇叶被击打时产生动画的刷新时间
 void TIM4_IRQHandler(void)
 {
+
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET)
 	{
 		systime_ms++;
@@ -63,5 +66,19 @@ void TIM4_IRQHandler(void)
 		}
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 	}
+	overflow_count++;
+}
+
+//以下函数是用来给红外遥控提供时序计时用的（本来想用TIM5的，结果发现stm32f103c8t6没有TIM5）
+void TIM4_StartCounter(void)
+{
+	overflow_count = 0;
+	cnt = TIM_GetCounter(TIM4);
+}
+
+//跟据溢出次数和计数器的值计算出时间，单位是微秒
+uint16_t TIM4_GetCounter(void)
+{
+	return overflow_count * 1000 + TIM_GetCounter(TIM4) - cnt;
 }
 

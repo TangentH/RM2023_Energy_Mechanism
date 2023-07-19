@@ -278,6 +278,7 @@ void check_LED_Status(void)
 {
     static LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶, static变量只在第一次生成时赋值，之后这句话不会再执行
     static uint8_t total_struck = 0; //总共击打的次数
+    static LED_Leaf_Name_t temp;    //用来存抽奖抽中的叶子
     //情况1：击中了
     if(timeout == 0 && currentLeafStruck == 1)
     {
@@ -285,18 +286,9 @@ void check_LED_Status(void)
         currentLeafStruck = 0;
         total_struck++;
         leafmode[current_striking_leaf] = LEAF_STRUCK;
-        if(total_struck == 5)
+        while(total_struck != 5)    //如果不是全部打中，就一直抽到关闭的灯为止
         {
-            total_struck = 0;
-            for(uint8_t i = 0; i < 5; i++)
-            {
-                leafmode[i] = LEAF_OFF;
-                leaf_ring_value[i] = 0;
-            }
-        }
-        while(1)
-        {
-            LED_Leaf_Name_t temp = (LED_Leaf_Name_t) rand_get(5);
+            temp = (LED_Leaf_Name_t) rand_get(5);
             //一直抽到没有点亮的扇叶为止
             if(leafmode[temp] == LEAF_OFF)
             {
@@ -307,7 +299,7 @@ void check_LED_Status(void)
         }
     }
     //情况2：超时（不考虑打错的情况）
-    else if(timeout == 1)
+    else if(timeout == 1 && total_struck != 5)
     {
         timeout = 0;
         currentLeafStruck = 0;
@@ -317,9 +309,31 @@ void check_LED_Status(void)
             leafmode[i] = LEAF_OFF;
             leaf_ring_value[i] = 0;
         }
-        LED_Leaf_Name_t temp = (LED_Leaf_Name_t) rand_get(5);
-        leafmode[temp] = LEAF_STRIKING;
+        while(1)
+        {
+            temp = (LED_Leaf_Name_t) rand_get(5);
+            if(temp != current_striking_leaf)  //避免连续抽到同一片扇叶
+            {
+                leafmode[temp] = LEAF_STRIKING;
+                current_striking_leaf = temp;
+                break;
+            }
+        }
     }
+    //情况3：超时，但是5片叶子都击中了，需要复位
+    else if(timeout == 1 && total_struck == 5)
+    {
+        timeout = 0;
+        total_struck = 0;
+        for(uint8_t i = 0; i < 5; i++)
+        {
+            leafmode[i] = LEAF_OFF;
+            leaf_ring_value[i] = 0;
+        }
+        current_striking_leaf = (LED_Leaf_Name_t) rand_get(5);
+        leafmode[current_striking_leaf] = LEAF_STRIKING;
+    }
+    //情况4：未超时，则说明是保持状态，什么都不用做
 }
 
 // 以上的packData都是针对一片叶子的，现在希望连续刷新所有的叶子
