@@ -1,6 +1,7 @@
 #include "stm32f10x.h" // Device header
 #include "led.h"
 #include "infrared.h"
+#include "Delay.h"
 
 
 int main(void)
@@ -10,6 +11,8 @@ int main(void)
 	
 	while (1)
 	{
+		Delay_ms(100);
+		while(!ws2812b_IsReady());
 		LED_Update();
 	}
 }
