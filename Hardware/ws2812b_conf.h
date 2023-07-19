@@ -58,8 +58,8 @@
 // #define WS2812B_DMA_IT_TC       DMA1_IT_TC7 //DMA传输完成中断
 // #define WS2812B_DMA_IT_HT       DMA1_IT_HT7 //DMA传输一半中断
 
-#define WS2812B_IRQ_PRIO        0
-#define WS2812B_IRQ_SUBPRIO     0
+#define WS2812B_IRQ_PRIO        3
+#define WS2812B_IRQ_SUBPRIO     3
 
 #define WS2812B_FREQUENCY       24000000
 #define WS2812B_PERIOD          30

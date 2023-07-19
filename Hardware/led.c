@@ -12,10 +12,15 @@ static LED_Leaf_Name_t current_Refresh_Leaf = LEAF_0; // 默认为第一片叶�
 static RGB_t leds[LED_NUM];    //存放led点亮数据的地方
 static RGB_t R_logo[64];   //存放R标的数据
 
-static LED_Leaf_Mode_t leafmode[5] = {LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF}; //存放每片叶子当前的状态，默认为关闭
-static RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色（其实有后面的LED_State就可以判断了，但是为了减轻CPU负担，尽量在颜色判断上只在初始化的时候判断一次）
-static LED_State_t LED_State = RedState; //能量机关默认为红方模式
-static uint8_t currentLeafStruck = 0;
+LED_Leaf_Mode_t leafmode[5] = {LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF, LEAF_OFF}; //存放每片叶子当前的状态，默认为关闭
+RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色（其实有后面的LED_State就可以判断了，但是为了减轻CPU负担，尽量在颜色判断上只在初始化的时候判断一次）
+
+
+LED_State_t LED_State = RedState; //能量机关默认为红方模式
+uint8_t currentLeafStruck = 0;
+LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶
+uint8_t total_struck = 0; //总共击打的次数
+
 
 void LED_Init(LED_State_t state)
 {
@@ -176,6 +181,15 @@ void LED_PackFrameData2(LED_Leaf_Mode_t leafmode, RGB_t *dst)
 }
 void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
 {
+    static RGB_t target_color = {80, 0, 0};   //靶心的颜色,和dim_red一样
+    if(LED_State == BlueState)
+    {
+        target_color = dim_blue;
+    }
+    else
+    {
+        target_color = dim_red;
+    }
     switch (leafmode)
     {
     case LEAF_OFF:
@@ -189,7 +203,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
         {
             if (TARGET_STRIKING[i])
             {
-                dst[i] = current_color;
+                dst[i] = target_color;
             }
             else
             {
@@ -204,7 +218,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
             {
                 if (TARGET_STRUCK_ring2[i])
                 {
-                    dst[i] = current_color;
+                    dst[i] = target_color;
                 }
                 else
                 {
@@ -218,7 +232,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
             {
                 if (TARGET_STRUCK_ring4[i])
                 {
-                    dst[i] = current_color;
+                    dst[i] = target_color;
                 }
                 else
                 {
@@ -232,7 +246,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
             {
                 if (TARGET_STRUCK_ring6[i])
                 {
-                    dst[i] = current_color;
+                    dst[i] = target_color;
                 }
                 else
                 {
@@ -246,7 +260,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
             {
                 if (TARGET_STRUCK_ring8[i])
                 {
-                    dst[i] = current_color;
+                    dst[i] = target_color;
                 }
                 else
                 {
@@ -260,7 +274,7 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
             {
                 if (TARGET_STRUCK_ring10[i])
                 {
-                    dst[i] = current_color;
+                    dst[i] = target_color;
                 }
                 else
                 {
@@ -276,8 +290,6 @@ void LED_PackTargetData(LED_Leaf_Mode_t leafmode, RGB_t *dst)
 //以下函数会确定当下刷新时每片叶子是什么状态，并且会修改leftmode数组和leaf_ring_value数组
 void check_LED_Status(void)
 {
-    static LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶, static变量只在第一次生成时赋值，之后这句话不会再执行
-    static uint8_t total_struck = 0; //总共击打的次数
     static LED_Leaf_Name_t temp;    //用来存抽奖抽中的叶子
     //情况1：击中了
     if(timeout == 0 && currentLeafStruck == 1)

@@ -1,6 +1,8 @@
 #include "stm32f10x.h" // Device header
 #include "infrared.h"
 #include "timer.h"
+#include "led.h"
+#include "ws2812b.h"
 
 uint8_t timerOFFSET = 1; // 当系统频率为8Mhz时需要做补偿，可以通过主函数中的RCC_Clocks结构体获得当前时钟频率
 
@@ -17,6 +19,13 @@ uint8_t IR_Command;     // 用于存储命令码（键码）
 uint8_t IR_AntiAddress; // 用于存储地址码反码
 uint8_t IR_AntiCommand; // 用于存储命令码反码（键码）
 
+extern RGB_t current_color; //变量，表示这片叶子亮哪方的颜色（其实有后面的LED_State就可以判断了，但是为了减轻CPU负担，尽量在颜色判断上只在初始化的时候判断一次）
+extern LED_State_t LED_State; //能量机关默认为红方模式
+extern uint8_t currentLeafStruck;
+extern LED_Leaf_Name_t current_striking_leaf; //当前击打的扇叶
+extern uint8_t leaf_ring_value[5]; //用于存储每片扇叶的环数
+extern RGB_t current_color;
+extern uint8_t total_struck;    //总共击打的次数
 /*
         NEC红外编码: 引导码 + 地址码 + 地址码(取反) + 数据 + 数据(取反)
 
@@ -28,6 +37,7 @@ uint8_t IR_AntiCommand; // 用于存储命令码反码（键码）
         重复码：9ms 前导高电平，2.25ms的低电平，562.5μs的高电平来标记一帧重复码的结束。
 */
 void EXTI3_Init(void);
+void LED_set(void);
 
 void IR_Init(void)
 {
@@ -109,7 +119,7 @@ void EXTI3_IRQHandler(void)
                     IR_State = 1;
                 }
             }
-            else if (IR_State == 2)
+            else if (IR_State == 2) // 接收数据
             {
                 IR_Time = TIM4_GetCounter();
                 TIM4_StartCounter();
@@ -139,10 +149,14 @@ void EXTI3_IRQHandler(void)
                     IR_AntiAddress = IR_Data[1];
                     IR_Command = IR_Data[2];
                     IR_AntiCommand = IR_Data[3];
-                    IR_DataFlag = 1;
+                    IR_DataFlag = 1;    // 接收结束
 
                     //					}
                     IR_State = 0;
+                    if(IR_Address == 0x00 && total_struck != 5)     //防止出现全部点亮后，还能继续击打的情况
+                    {
+                        LED_set();  //跟据接收到的红外信号，改变能量机关的状态
+                    }
                 }
             }
         }
@@ -173,8 +187,47 @@ void EXTI3_Init(void)
     NVIC_InitTypeDef NVIC_InitStructure;
     NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     NVIC_Init(&NVIC_InitStructure);
 		//由于这份代码太多中断了，为了防止错过红外信号，要提高它的NVIC优先级
+}
+
+void LED_set(void)
+{
+    switch(IR_Command)
+    {
+        case 0x15:  //确定键
+            currentLeafStruck = 1;
+            leaf_ring_value[current_striking_leaf] = 0;
+            break;
+        case 0x16:  //上键
+            currentLeafStruck = 1;
+            leaf_ring_value[current_striking_leaf] = 1;
+            break;
+        case 0x18:  //右键
+            currentLeafStruck = 1;
+            leaf_ring_value[current_striking_leaf] = 2;
+            break;
+        case 0x17:  //下键
+            currentLeafStruck = 1;
+            leaf_ring_value[current_striking_leaf] = 3;
+            break;
+        case 0x19:  //左键
+            currentLeafStruck = 1;
+            leaf_ring_value[current_striking_leaf] = 4;
+            break;
+        case 0x94:
+            if(LED_State == RedState)
+            {
+                LED_State = BlueState;
+                current_color = blue;
+            }
+            else
+            {
+                LED_State = RedState;
+                current_color = red;
+            }
+            break;
+    }
 }

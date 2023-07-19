@@ -30,3 +30,6 @@
 .\objects\infrared.o: .\Library\misc.h
 .\objects\infrared.o: Hardware\infrared.h
 .\objects\infrared.o: .\System\timer.h
+.\objects\infrared.o: Hardware\led.h
+.\objects\infrared.o: Hardware\ws2812b.h
+.\objects\infrared.o: Hardware\bitmap.h
