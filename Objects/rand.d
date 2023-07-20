@@ -29,5 +29,4 @@
 .\objects\rand.o: .\Library\stm32f10x_wwdg.h
 .\objects\rand.o: .\Library\misc.h
 .\objects\rand.o: System\rand.h
-.\objects\rand.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\rand.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

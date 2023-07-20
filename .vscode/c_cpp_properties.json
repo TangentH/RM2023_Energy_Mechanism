@@ -3,11 +3,11 @@
         {
             "name": "Target 1",
             "includePath": [
-                "d:\\MyProjects\\ArtinxProjects\\Energy_mechanism\\USE_LIB\\NEW_RM_Energy_Mechanism\\Start",
-                "d:\\MyProjects\\ArtinxProjects\\Energy_mechanism\\USE_LIB\\NEW_RM_Energy_Mechanism\\Library",
-                "d:\\MyProjects\\ArtinxProjects\\Energy_mechanism\\USE_LIB\\NEW_RM_Energy_Mechanism\\User",
-                "d:\\MyProjects\\ArtinxProjects\\Energy_mechanism\\USE_LIB\\NEW_RM_Energy_Mechanism\\System",
-                "d:\\MyProjects\\ArtinxProjects\\Energy_mechanism\\USE_LIB\\NEW_RM_Energy_Mechanism\\Hardware"
+                "d:\\MyProjects\\ArtinxProjects\\New_Energy_mechanism\\USE_LIB（最终版）\\NEW_RM_Energy_Mechanism\\Start",
+                "d:\\MyProjects\\ArtinxProjects\\New_Energy_mechanism\\USE_LIB（最终版）\\NEW_RM_Energy_Mechanism\\Library",
+                "d:\\MyProjects\\ArtinxProjects\\New_Energy_mechanism\\USE_LIB（最终版）\\NEW_RM_Energy_Mechanism\\User",
+                "d:\\MyProjects\\ArtinxProjects\\New_Energy_mechanism\\USE_LIB（最终版）\\NEW_RM_Energy_Mechanism\\System",
+                "d:\\MyProjects\\ArtinxProjects\\New_Energy_mechanism\\USE_LIB（最终版）\\NEW_RM_Energy_Mechanism\\Hardware"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",

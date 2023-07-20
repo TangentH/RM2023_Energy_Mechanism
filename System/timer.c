@@ -16,11 +16,11 @@ void Timer_Init(void)
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;//相当于按照时钟频率来滤波
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	//决定定时时间//////////////////////////////////////////////
+	//决定定时时间
 	TIM_TimeBaseInitStructure.TIM_Period = 10000 - 1;	//分辨率是1us
 	TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1;//分频系数
 	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0;//只有高级定时器才有，这里直接给0就可以了
-	///////////////////////////////////////////////////////////
+	
 	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
 	//定时器在时基单元初始化后会立刻产生一个更新事件（同时将中断标志位置1），这样就能使得自动重装值和分频系数立刻生效
 	//但是副作用是如果不清除这个标志位，上电就会自动进入一次中断函数
