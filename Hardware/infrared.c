@@ -153,7 +153,7 @@ void EXTI3_IRQHandler(void)
 
                     //					}
                     IR_State = 0;
-                    if(IR_Address == 0x00 && total_struck != 5)     //防止出现全部点亮后，还能继续击打的情况
+									if(IR_Address == 0x00 )     //防止出现全部点亮后，还能继续击打的情况
                     {
                         LED_set();  //跟据接收到的红外信号，改变能量机关的状态
                     }

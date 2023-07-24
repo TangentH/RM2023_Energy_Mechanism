@@ -11,7 +11,8 @@ int main(void)
 	
 	while (1)
 	{
-		Delay_ms(80);
+		Delay_ms(100);
+		while(!ws2812b_IsReady());
 		LED_Update();
 	}
 }

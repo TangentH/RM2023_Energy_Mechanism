@@ -60,7 +60,7 @@ void TIM4_IRQHandler(void)
 			Timer_reset();
             timeout = 1;
         }
-		if(systime_ms % 10 == 0)	//每100ms刷新一次动画
+		if(systime_ms % 10 == 0)	//刷新一次动画的时间间隔
 		{
 			refresh_rectangle = 1;
 		}

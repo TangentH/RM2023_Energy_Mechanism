@@ -298,7 +298,7 @@ void check_LED_Status(void)
         currentLeafStruck = 0;
         total_struck++;
         leafmode[current_striking_leaf] = LEAF_STRUCK;
-        while(total_struck != 5)    //如果不是全部打中，就一直抽到关闭的灯为止
+        while(total_struck < 5)    //如果不是全部打中，就一直抽到关闭的灯为止
         {
             temp = (LED_Leaf_Name_t) rand_get(5);
             //一直抽到没有点亮的扇叶为止
@@ -311,7 +311,7 @@ void check_LED_Status(void)
         }
     }
     //情况2：超时（不考虑打错的情况）
-    else if(timeout == 1 && total_struck != 5)
+    else if(timeout == 1 && total_struck < 5)
     {
         timeout = 0;
         currentLeafStruck = 0;
@@ -333,7 +333,7 @@ void check_LED_Status(void)
         }
     }
     //情况3：超时，但是5片叶子都击中了，需要复位
-    else if(timeout == 1 && total_struck == 5)
+    else if(timeout == 1 && total_struck >= 5)
     {
         timeout = 0;
         total_struck = 0;
@@ -351,6 +351,7 @@ void check_LED_Status(void)
 // 以上的packData都是针对一片叶子的，现在希望连续刷新所有的叶子
 void LED_Update(void)
 {
+    while (!ws2812b_IsReady());
     check_LED_Status();
     while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，而且每次发送前都要检查一遍否则可能出现数据串了的情况
     if (LED_State == DebugState)

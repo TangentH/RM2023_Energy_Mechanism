@@ -21,10 +21,10 @@ typedef enum{
 
 
 static const RGB_t red = {185, 0, 0};   //目前发现亮度太高好像会出现电流比较大导致信号线受到干扰的情况，所以把颜色调暗了一些
-static const RGB_t blue = {0, 0, 185};
+static const RGB_t blue = {0, 3, 225};
 static const RGB_t off = {0, 0, 0};
 static const RGB_t dim_red = {80, 0, 0};  //靶心的颜色
-static const RGB_t dim_blue = {0, 0, 80};   //靶心的颜色
+static const RGB_t dim_blue = {0, 0, 120};   //靶心的颜色
 
 
 

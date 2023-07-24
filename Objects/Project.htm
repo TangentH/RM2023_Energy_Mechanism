@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Jul 20 20:19:00 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jul 24 19:54:37 2023
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -557,7 +557,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 
-<P><STRONG><a name="[16]"></a>EXTI3_IRQHandler</STRONG> (Thumb, 436 bytes, Stack size 8 bytes, infrared.o(i.EXTI3_IRQHandler))
+<P><STRONG><a name="[16]"></a>EXTI3_IRQHandler</STRONG> (Thumb, 428 bytes, Stack size 8 bytes, infrared.o(i.EXTI3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = EXTI3_IRQHandler &rArr; TIM4_StartCounter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -668,23 +668,23 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[78]"></a>LED_Update</STRONG> (Thumb, 262 bytes, Stack size 8 bytes, led.o(i.LED_Update))
+<P><STRONG><a name="[78]"></a>LED_Update</STRONG> (Thumb, 272 bytes, Stack size 8 bytes, led.o(i.LED_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LED_Update &rArr; ws2812b_SW1_SendRGB &rArr; DMA1_CH5Send &rArr; SrcFilterNull
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackTargetData
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackStripData
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackRectangleData
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackLightALLData
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData2
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData1
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_SW1_SendRGB
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H8_SendRGB
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H7_SendRGB
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H6_SendRGB
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H4_SendRGB
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H3_SendRGB
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -887,14 +887,14 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8e]"></a>Timer_reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, timer.o(i.Timer_reset))
-<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[8]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[79]"></a>check_LED_Status</STRONG> (Thumb, 266 bytes, Stack size 8 bytes, led.o(i.check_LED_Status))
+<P><STRONG><a name="[7a]"></a>check_LED_Status</STRONG> (Thumb, 266 bytes, Stack size 8 bytes, led.o(i.check_LED_Status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = check_LED_Status &rArr; rand_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
@@ -903,10 +903,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[47]"></a>main</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[47]"></a>main</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; LED_Init &rArr; ws2812b_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IR_Init
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
@@ -919,7 +920,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
 </UL>
 
 <P><STRONG><a name="[81]"></a>ws2812b_H3_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H3_SendRGB))
@@ -990,8 +991,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>ws2812b_IsReady</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ws2812b.o(i.ws2812b_IsReady))
+<P><STRONG><a name="[79]"></a>ws2812b_IsReady</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ws2812b.o(i.ws2812b_IsReady))
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[86]"></a>ws2812b_SW1_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_SW1_SendRGB))
