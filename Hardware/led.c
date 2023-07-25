@@ -351,6 +351,15 @@ void check_LED_Status(void)
 // 以上的packData都是针对一片叶子的，现在希望连续刷新所有的叶子
 void LED_Update(void)
 {
+    static RGB_t R_color = {255, 0, 0};
+    if(LED_State == BlueState)
+    {
+        R_color = R_blue;
+    }
+    else
+    {
+        R_color = R_red;
+    }
     while (!ws2812b_IsReady());
     check_LED_Status();
     while (!ws2812b_IsReady());     //跟据原作者的实例代码，需要先检查是否ready，再包装数据，而且每次发送前都要检查一遍否则可能出现数据串了的情况
@@ -396,7 +405,7 @@ void LED_Update(void)
             //pack R logo data
         for (uint8_t i = 0; i < 64; i++)
         {
-            R_logo[i] = current_color;
+            R_logo[i] = R_color;
         }
         ws2812b_SW1_SendRGB(R_logo, 64);    //R标单独发
         current_Refresh_Leaf = LEAF_0;
