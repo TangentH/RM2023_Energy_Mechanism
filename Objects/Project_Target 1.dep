@@ -916,7 +916,7 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
 I (Hardware\bitmap.h)(0x6464CE4B)
 I (Hardware\ws2812b.h)(0x64B6960D)
-I (Hardware\ws2812b_conf.h)(0x64B8134F)
+I (Hardware\ws2812b_conf.h)(0x64C0E811)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (.\Start\system_stm32f10x.h)(0x4D783CAA)
@@ -945,8 +945,8 @@ I (.\Library\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Library\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Library\misc.h)(0x4D783BB4)
 F (.\Hardware\ws2812b.h)(0x64B6960D)()
-F (.\Hardware\ws2812b_conf.h)(0x64B8134F)()
-F (.\Hardware\led.c)(0x64BFEDDF)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="536" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+F (.\Hardware\ws2812b_conf.h)(0x64C0E811)()
+F (.\Hardware\led.c)(0x64BFFA19)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="536" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -978,11 +978,11 @@ I (.\Library\misc.h)(0x4D783BB4)
 I (Hardware\led.h)(0x64BFED3C)
 I (Hardware\ws2812b.h)(0x64B6960D)
 I (Hardware\bitmap.h)(0x6464CE4B)
-I (Hardware\pattern.h)(0x64B6AB89)
+I (Hardware\pattern.h)(0x64C0E6BC)
 I (.\System\timer.h)(0x64B795A1)
 I (.\System\rand.h)(0x64B920BA)
 F (.\Hardware\led.h)(0x64BFED3C)()
-F (.\Hardware\pattern.h)(0x64B6AB89)()
+F (.\Hardware\pattern.h)(0x64C0E6BC)()
 F (.\Hardware\infrared.c)(0x64BE818B)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="536" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\infrared.o --omf_browse .\objects\infrared.crf --depend .\objects\infrared.d)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
