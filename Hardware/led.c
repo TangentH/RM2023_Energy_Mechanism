@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "rand.h"
 
+uint8_t debug = 0;  //debug = 1模式下叶片不切换
 uint8_t timeout = 0;       // 如果时间到了(2.5s)，timeout = 1，由定时器硬件中断修改
 uint8_t refresh_rectangle = 0; // 如果刷新灯板（指的是让长方形灯板里面的箭头流动起来）时间到了，refresh_rectangle = 1，由定时器中硬件中断修改
 uint8_t leaf_ring_value[5] = {0, 0, 0, 0, 0};   //取值范围0-4，分别对应2环，4环，6环，8环，10环

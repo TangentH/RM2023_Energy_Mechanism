@@ -6,6 +6,7 @@ uint16_t cnt = 0;	//存CNT计数器的值
 
 extern uint8_t timeout;
 extern uint8_t refresh_rectangle;
+extern uint8_t debug;
 
 void Timer_Init(void)
 {
@@ -54,16 +55,19 @@ void TIM4_IRQHandler(void)
 
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET)
 	{
-		systime_ms++;
+		if(debug != 1)	//不更新systime_ms，相当于让叶片刷新停止了
+		{
+			systime_ms++;
+		}
         if(systime_ms == 250)  //2.5s计时到
         {
 			Timer_reset();
             timeout = 1;
         }
-		if(systime_ms % 10 == 0)	//刷新一次动画的时间间隔
-		{
-			refresh_rectangle = 1;
-		}
+		// if(systime_ms % 10 == 0)	//刷新一次动画的时间间隔
+		// {
+			refresh_rectangle = 1;	//由于main函数里面已经有延迟了，这里就不计算刷新动画的延迟时间了
+		// }
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 	}
 	overflow_count++;
