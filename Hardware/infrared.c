@@ -26,6 +26,7 @@ extern LED_Leaf_Name_t current_striking_leaf; //当前击打的扇叶
 extern uint8_t leaf_ring_value[5]; //用于存储每片扇叶的环数
 extern RGB_t current_color;
 extern uint8_t total_struck;    //总共击打的次数
+extern uint8_t debug;   //debug = 1,叶片不更换
 /*
         NEC红外编码: 引导码 + 地址码 + 地址码(取反) + 数据 + 数据(取反)
 
@@ -228,6 +229,9 @@ void LED_set(void)
                 LED_State = RedState;
                 current_color = red;
             }
+            break;
+        case 0x0F:
+            debug = (debug == 0 ? 1 : 0);
             break;
     }
 }
