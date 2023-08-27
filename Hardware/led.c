@@ -4,7 +4,7 @@
 #include "timer.h"
 #include "rand.h"
 
-uint8_t debug = 0;  //debug = 1模式下叶片不切换
+uint8_t debug = 0;  //debug = 1模式下叶片不会2.5s切换，方便视觉对同一个叶片持续调参
 uint8_t timeout = 0;       // 如果时间到了(2.5s)，timeout = 1，由定时器硬件中断修改
 uint8_t refresh_rectangle = 0; // 如果刷新灯板（指的是让长方形灯板里面的箭头流动起来）时间到了，refresh_rectangle = 1，由定时器中硬件中断修改
 uint8_t leaf_ring_value[5] = {0, 0, 0, 0, 0};   //取值范围0-4，分别对应2环，4环，6环，8环，10环
@@ -18,7 +18,7 @@ RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色
 
 
 LED_State_t LED_State = RedState; //能量机关默认为红方模式
-uint8_t currentLeafStruck = 0;
+uint8_t currentLeafStruck = 0;· //当前叶子是否击中了
 LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶
 uint8_t total_struck = 0; //总共击打的次数
 
