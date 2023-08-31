@@ -33,3 +33,4 @@
 .\objects\main.o: .\Hardware\bitmap.h
 .\objects\main.o: .\Hardware\infrared.h
 .\objects\main.o: .\System\Delay.h
+.\objects\main.o: .\System\rand.h
