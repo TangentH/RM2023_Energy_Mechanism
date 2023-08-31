@@ -132,8 +132,8 @@ Section Cross References
     rand.o(i.rand_init) refers to rand.o(.text) for srand
     rand.o(i.rand_init) refers to rand.o(.data) for seed
     main.o(i.main) refers to infrared.o(i.IR_Init) for IR_Init
-    main.o(i.main) refers to led.o(i.LED_Init) for LED_Init
     main.o(i.main) refers to rand.o(i.rand_init) for rand_init
+    main.o(i.main) refers to led.o(i.LED_Init) for LED_Init
     main.o(i.main) refers to delay.o(i.Delay_ms) for Delay_ms
     main.o(i.main) refers to ws2812b.o(i.ws2812b_IsReady) for ws2812b_IsReady
     main.o(i.main) refers to led.o(i.LED_Update) for LED_Update
@@ -278,6 +278,7 @@ Section Cross References
     ws2812b.o(i.ws2812b_SW1_SendRGB) refers to ws2812b.o(i.SrcFilterRGB) for SrcFilterRGB
     led.o(i.LED_Init) refers to timer.o(i.Timer_Init) for Timer_Init
     led.o(i.LED_Init) refers to ws2812b.o(i.ws2812b_Init) for ws2812b_Init
+    led.o(i.LED_Init) refers to rand.o(i.rand_get) for rand_get
     led.o(i.LED_Init) refers to led.o(.data) for LED_State
     led.o(i.LED_Init) refers to led.o(.constdata) for red
     led.o(i.LED_Init) refers to led.o(.bss) for R_logo
@@ -1117,87 +1118,87 @@ Image Symbol Table
     i.LEDGamma                               0x08001550   Section        0  ws2812b.o(i.LEDGamma)
     LEDGamma                                 0x08001551   Thumb Code     8  ws2812b.o(i.LEDGamma)
     i.LED_Init                               0x0800155c   Section        0  led.o(i.LED_Init)
-    i.LED_PackFrameData1                     0x080015c0   Section        0  led.o(i.LED_PackFrameData1)
-    i.LED_PackFrameData2                     0x08001638   Section        0  led.o(i.LED_PackFrameData2)
-    i.LED_PackLightALLData                   0x080016b0   Section        0  led.o(i.LED_PackLightALLData)
-    i.LED_PackRectangleData                  0x080016ec   Section        0  led.o(i.LED_PackRectangleData)
-    i.LED_PackStripData                      0x08001804   Section        0  led.o(i.LED_PackStripData)
-    i.LED_PackTargetData                     0x0800187c   Section        0  led.o(i.LED_PackTargetData)
-    i.LED_Update                             0x08001a94   Section        0  led.o(i.LED_Update)
-    i.LED_set                                0x08001bf4   Section        0  infrared.o(i.LED_set)
-    i.MemManage_Handler                      0x08001cdc   Section        0  stm32f10x_it.o(i.MemManage_Handler)
-    i.NMI_Handler                            0x08001ce0   Section        0  stm32f10x_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x08001ce4   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x08001d54   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.PendSV_Handler                         0x08001d68   Section        0  stm32f10x_it.o(i.PendSV_Handler)
-    i.RCC_ADCCLKConfig                       0x08001d6c   Section        0  stm32f10x_rcc.o(i.RCC_ADCCLKConfig)
-    i.RCC_AHBPeriphClockCmd                  0x08001d84   Section        0  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
-    i.RCC_APB1PeriphClockCmd                 0x08001da4   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08001dc4   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RGB2PWM                                0x08001de4   Section        0  ws2812b.o(i.RGB2PWM)
-    RGB2PWM                                  0x08001de5   Thumb Code   112  ws2812b.o(i.RGB2PWM)
-    i.SVC_Handler                            0x08001e54   Section        0  stm32f10x_it.o(i.SVC_Handler)
-    i.SetSysClock                            0x08001e56   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x08001e57   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08001e60   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08001e61   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.SrcFilterNull                          0x08001f40   Section        0  ws2812b.o(i.SrcFilterNull)
-    SrcFilterNull                            0x08001f41   Thumb Code    40  ws2812b.o(i.SrcFilterNull)
-    i.SrcFilterRGB                           0x08001f68   Section        0  ws2812b.o(i.SrcFilterRGB)
-    SrcFilterRGB                             0x08001f69   Thumb Code    64  ws2812b.o(i.SrcFilterRGB)
-    i.SysTick_Handler                        0x08001fa8   Section        0  stm32f10x_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x08001fac   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.TIM4_GetCounter                        0x0800200c   Section        0  timer.o(i.TIM4_GetCounter)
-    i.TIM4_IRQHandler                        0x08002038   Section        0  timer.o(i.TIM4_IRQHandler)
-    i.TIM4_StartCounter                      0x0800209c   Section        0  timer.o(i.TIM4_StartCounter)
-    i.TIM_ClearFlag                          0x080020bc   Section        0  stm32f10x_tim.o(i.TIM_ClearFlag)
-    i.TIM_ClearITPendingBit                  0x080020c2   Section        0  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
-    i.TIM_Cmd                                0x080020c8   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
-    i.TIM_CtrlPWMOutputs                     0x080020e0   Section        0  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
-    i.TIM_DMACmd                             0x080020fe   Section        0  stm32f10x_tim.o(i.TIM_DMACmd)
-    i.TIM_GetCounter                         0x08002110   Section        0  stm32f10x_tim.o(i.TIM_GetCounter)
-    i.TIM_GetITStatus                        0x08002116   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
-    i.TIM_ITConfig                           0x08002138   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
-    i.TIM_InternalClockConfig                0x0800214a   Section        0  stm32f10x_tim.o(i.TIM_InternalClockConfig)
-    i.TIM_OC1Init                            0x08002158   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
-    i.TIM_OC1PreloadConfig                   0x080021f0   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    i.TIM_OC2Init                            0x08002204   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
-    i.TIM_OC2PreloadConfig                   0x080022a8   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    i.TIM_OC3Init                            0x080022c4   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
-    i.TIM_OC3PreloadConfig                   0x08002364   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    i.TIM_OC4Init                            0x08002378   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
-    i.TIM_OC4PreloadConfig                   0x080023f4   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    i.TIM_OCStructInit                       0x0800240e   Section        0  stm32f10x_tim.o(i.TIM_OCStructInit)
-    i.TIM_TimeBaseInit                       0x08002424   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    i.TIM_TimeBaseStructInit                 0x080024c8   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseStructInit)
-    i.Timer_Init                             0x080024dc   Section        0  timer.o(i.Timer_Init)
-    i.Timer_reset                            0x08002558   Section        0  timer.o(i.Timer_reset)
-    i.UsageFault_Handler                     0x08002564   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.check_LED_Status                       0x08002568   Section        0  led.o(i.check_LED_Status)
-    i.main                                   0x08002690   Section        0  main.o(i.main)
-    i.rand_get                               0x080026b6   Section        0  rand.o(i.rand_get)
-    i.rand_init                              0x080026cc   Section        0  rand.o(i.rand_init)
-    i.ws2812b_H3_SendRGB                     0x080026e8   Section        0  ws2812b.o(i.ws2812b_H3_SendRGB)
-    i.ws2812b_H4_SendRGB                     0x08002700   Section        0  ws2812b.o(i.ws2812b_H4_SendRGB)
-    i.ws2812b_H6_SendRGB                     0x08002718   Section        0  ws2812b.o(i.ws2812b_H6_SendRGB)
-    i.ws2812b_H7_SendRGB                     0x08002730   Section        0  ws2812b.o(i.ws2812b_H7_SendRGB)
-    i.ws2812b_H8_SendRGB                     0x08002748   Section        0  ws2812b.o(i.ws2812b_H8_SendRGB)
-    i.ws2812b_Init                           0x08002760   Section        0  ws2812b.o(i.ws2812b_Init)
-    i.ws2812b_IsReady                        0x08002a2c   Section        0  ws2812b.o(i.ws2812b_IsReady)
-    i.ws2812b_SW1_SendRGB                    0x08002a70   Section        0  ws2812b.o(i.ws2812b_SW1_SendRGB)
-    .constdata                               0x08002a88   Section      256  ws2812b.o(.constdata)
-    LEDGammaTable                            0x08002a88   Data         256  ws2812b.o(.constdata)
-    .constdata                               0x08002b88   Section     6421  led.o(.constdata)
-    red                                      0x08002b88   Data           3  led.o(.constdata)
-    blue                                     0x08002b8b   Data           3  led.o(.constdata)
-    off                                      0x08002b8e   Data           3  led.o(.constdata)
-    dim_red                                  0x08002b91   Data           3  led.o(.constdata)
-    dim_blue                                 0x08002b94   Data           3  led.o(.constdata)
-    R_red                                    0x08002b97   Data           3  led.o(.constdata)
-    R_blue                                   0x08002b9a   Data           3  led.o(.constdata)
-    .constdata                               0x0800449d   Section        6  infrared.o(.constdata)
-    red                                      0x0800449d   Data           3  infrared.o(.constdata)
-    blue                                     0x080044a0   Data           3  infrared.o(.constdata)
+    i.LED_PackFrameData1                     0x080015cc   Section        0  led.o(i.LED_PackFrameData1)
+    i.LED_PackFrameData2                     0x08001644   Section        0  led.o(i.LED_PackFrameData2)
+    i.LED_PackLightALLData                   0x080016bc   Section        0  led.o(i.LED_PackLightALLData)
+    i.LED_PackRectangleData                  0x080016f8   Section        0  led.o(i.LED_PackRectangleData)
+    i.LED_PackStripData                      0x08001810   Section        0  led.o(i.LED_PackStripData)
+    i.LED_PackTargetData                     0x08001888   Section        0  led.o(i.LED_PackTargetData)
+    i.LED_Update                             0x08001aa0   Section        0  led.o(i.LED_Update)
+    i.LED_set                                0x08001c00   Section        0  infrared.o(i.LED_set)
+    i.MemManage_Handler                      0x08001ce8   Section        0  stm32f10x_it.o(i.MemManage_Handler)
+    i.NMI_Handler                            0x08001cec   Section        0  stm32f10x_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x08001cf0   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x08001d60   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.PendSV_Handler                         0x08001d74   Section        0  stm32f10x_it.o(i.PendSV_Handler)
+    i.RCC_ADCCLKConfig                       0x08001d78   Section        0  stm32f10x_rcc.o(i.RCC_ADCCLKConfig)
+    i.RCC_AHBPeriphClockCmd                  0x08001d90   Section        0  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
+    i.RCC_APB1PeriphClockCmd                 0x08001db0   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    i.RCC_APB2PeriphClockCmd                 0x08001dd0   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RGB2PWM                                0x08001df0   Section        0  ws2812b.o(i.RGB2PWM)
+    RGB2PWM                                  0x08001df1   Thumb Code   112  ws2812b.o(i.RGB2PWM)
+    i.SVC_Handler                            0x08001e60   Section        0  stm32f10x_it.o(i.SVC_Handler)
+    i.SetSysClock                            0x08001e62   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x08001e63   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x08001e6c   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x08001e6d   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SrcFilterNull                          0x08001f4c   Section        0  ws2812b.o(i.SrcFilterNull)
+    SrcFilterNull                            0x08001f4d   Thumb Code    40  ws2812b.o(i.SrcFilterNull)
+    i.SrcFilterRGB                           0x08001f74   Section        0  ws2812b.o(i.SrcFilterRGB)
+    SrcFilterRGB                             0x08001f75   Thumb Code    64  ws2812b.o(i.SrcFilterRGB)
+    i.SysTick_Handler                        0x08001fb4   Section        0  stm32f10x_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x08001fb8   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.TIM4_GetCounter                        0x08002018   Section        0  timer.o(i.TIM4_GetCounter)
+    i.TIM4_IRQHandler                        0x08002044   Section        0  timer.o(i.TIM4_IRQHandler)
+    i.TIM4_StartCounter                      0x080020a8   Section        0  timer.o(i.TIM4_StartCounter)
+    i.TIM_ClearFlag                          0x080020c8   Section        0  stm32f10x_tim.o(i.TIM_ClearFlag)
+    i.TIM_ClearITPendingBit                  0x080020ce   Section        0  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
+    i.TIM_Cmd                                0x080020d4   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
+    i.TIM_CtrlPWMOutputs                     0x080020ec   Section        0  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
+    i.TIM_DMACmd                             0x0800210a   Section        0  stm32f10x_tim.o(i.TIM_DMACmd)
+    i.TIM_GetCounter                         0x0800211c   Section        0  stm32f10x_tim.o(i.TIM_GetCounter)
+    i.TIM_GetITStatus                        0x08002122   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
+    i.TIM_ITConfig                           0x08002144   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
+    i.TIM_InternalClockConfig                0x08002156   Section        0  stm32f10x_tim.o(i.TIM_InternalClockConfig)
+    i.TIM_OC1Init                            0x08002164   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
+    i.TIM_OC1PreloadConfig                   0x080021fc   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    i.TIM_OC2Init                            0x08002210   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
+    i.TIM_OC2PreloadConfig                   0x080022b4   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    i.TIM_OC3Init                            0x080022d0   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
+    i.TIM_OC3PreloadConfig                   0x08002370   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    i.TIM_OC4Init                            0x08002384   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
+    i.TIM_OC4PreloadConfig                   0x08002400   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    i.TIM_OCStructInit                       0x0800241a   Section        0  stm32f10x_tim.o(i.TIM_OCStructInit)
+    i.TIM_TimeBaseInit                       0x08002430   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    i.TIM_TimeBaseStructInit                 0x080024d4   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseStructInit)
+    i.Timer_Init                             0x080024e8   Section        0  timer.o(i.Timer_Init)
+    i.Timer_reset                            0x08002564   Section        0  timer.o(i.Timer_reset)
+    i.UsageFault_Handler                     0x08002570   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.check_LED_Status                       0x08002574   Section        0  led.o(i.check_LED_Status)
+    i.main                                   0x0800269c   Section        0  main.o(i.main)
+    i.rand_get                               0x080026c2   Section        0  rand.o(i.rand_get)
+    i.rand_init                              0x080026d8   Section        0  rand.o(i.rand_init)
+    i.ws2812b_H3_SendRGB                     0x080026f4   Section        0  ws2812b.o(i.ws2812b_H3_SendRGB)
+    i.ws2812b_H4_SendRGB                     0x0800270c   Section        0  ws2812b.o(i.ws2812b_H4_SendRGB)
+    i.ws2812b_H6_SendRGB                     0x08002724   Section        0  ws2812b.o(i.ws2812b_H6_SendRGB)
+    i.ws2812b_H7_SendRGB                     0x0800273c   Section        0  ws2812b.o(i.ws2812b_H7_SendRGB)
+    i.ws2812b_H8_SendRGB                     0x08002754   Section        0  ws2812b.o(i.ws2812b_H8_SendRGB)
+    i.ws2812b_Init                           0x0800276c   Section        0  ws2812b.o(i.ws2812b_Init)
+    i.ws2812b_IsReady                        0x08002a38   Section        0  ws2812b.o(i.ws2812b_IsReady)
+    i.ws2812b_SW1_SendRGB                    0x08002a7c   Section        0  ws2812b.o(i.ws2812b_SW1_SendRGB)
+    .constdata                               0x08002a94   Section      256  ws2812b.o(.constdata)
+    LEDGammaTable                            0x08002a94   Data         256  ws2812b.o(.constdata)
+    .constdata                               0x08002b94   Section     6421  led.o(.constdata)
+    red                                      0x08002b94   Data           3  led.o(.constdata)
+    blue                                     0x08002b97   Data           3  led.o(.constdata)
+    off                                      0x08002b9a   Data           3  led.o(.constdata)
+    dim_red                                  0x08002b9d   Data           3  led.o(.constdata)
+    dim_blue                                 0x08002ba0   Data           3  led.o(.constdata)
+    R_red                                    0x08002ba3   Data           3  led.o(.constdata)
+    R_blue                                   0x08002ba6   Data           3  led.o(.constdata)
+    .constdata                               0x080044a9   Section        6  infrared.o(.constdata)
+    red                                      0x080044a9   Data           3  infrared.o(.constdata)
+    blue                                     0x080044ac   Data           3  infrared.o(.constdata)
     .data                                    0x20000000   Section       20  system_stm32f10x.o(.data)
     .data                                    0x20000014   Section        8  timer.o(.data)
     .data                                    0x2000001c   Section        2  rand.o(.data)
@@ -1417,74 +1418,74 @@ Image Symbol Table
     GPIO_StructInit                          0x08001535   Thumb Code    16  stm32f10x_gpio.o(i.GPIO_StructInit)
     HardFault_Handler                        0x08001545   Thumb Code     4  stm32f10x_it.o(i.HardFault_Handler)
     IR_Init                                  0x08001549   Thumb Code     8  infrared.o(i.IR_Init)
-    LED_Init                                 0x0800155d   Thumb Code    78  led.o(i.LED_Init)
-    LED_PackFrameData1                       0x080015c1   Thumb Code   112  led.o(i.LED_PackFrameData1)
-    LED_PackFrameData2                       0x08001639   Thumb Code   112  led.o(i.LED_PackFrameData2)
-    LED_PackLightALLData                     0x080016b1   Thumb Code    46  led.o(i.LED_PackLightALLData)
-    LED_PackRectangleData                    0x080016ed   Thumb Code   258  led.o(i.LED_PackRectangleData)
-    LED_PackStripData                        0x08001805   Thumb Code   112  led.o(i.LED_PackStripData)
-    LED_PackTargetData                       0x0800187d   Thumb Code   484  led.o(i.LED_PackTargetData)
-    LED_Update                               0x08001a95   Thumb Code   306  led.o(i.LED_Update)
-    LED_set                                  0x08001bf5   Thumb Code   194  infrared.o(i.LED_set)
-    MemManage_Handler                        0x08001cdd   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
-    NMI_Handler                              0x08001ce1   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
-    NVIC_Init                                0x08001ce5   Thumb Code   100  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x08001d55   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
-    PendSV_Handler                           0x08001d69   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
-    RCC_ADCCLKConfig                         0x08001d6d   Thumb Code    18  stm32f10x_rcc.o(i.RCC_ADCCLKConfig)
-    RCC_AHBPeriphClockCmd                    0x08001d85   Thumb Code    26  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x08001da5   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08001dc5   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    SVC_Handler                              0x08001e55   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x08001fa9   Thumb Code     2  stm32f10x_it.o(i.SysTick_Handler)
-    SystemInit                               0x08001fad   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    TIM4_GetCounter                          0x0800200d   Thumb Code    32  timer.o(i.TIM4_GetCounter)
-    TIM4_IRQHandler                          0x08002039   Thumb Code    76  timer.o(i.TIM4_IRQHandler)
-    TIM4_StartCounter                        0x0800209d   Thumb Code    20  timer.o(i.TIM4_StartCounter)
-    TIM_ClearFlag                            0x080020bd   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearFlag)
-    TIM_ClearITPendingBit                    0x080020c3   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
-    TIM_Cmd                                  0x080020c9   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
-    TIM_CtrlPWMOutputs                       0x080020e1   Thumb Code    30  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
-    TIM_DMACmd                               0x080020ff   Thumb Code    18  stm32f10x_tim.o(i.TIM_DMACmd)
-    TIM_GetCounter                           0x08002111   Thumb Code     6  stm32f10x_tim.o(i.TIM_GetCounter)
-    TIM_GetITStatus                          0x08002117   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
-    TIM_ITConfig                             0x08002139   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
-    TIM_InternalClockConfig                  0x0800214b   Thumb Code    12  stm32f10x_tim.o(i.TIM_InternalClockConfig)
-    TIM_OC1Init                              0x08002159   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
-    TIM_OC1PreloadConfig                     0x080021f1   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    TIM_OC2Init                              0x08002205   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
-    TIM_OC2PreloadConfig                     0x080022a9   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    TIM_OC3Init                              0x080022c5   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
-    TIM_OC3PreloadConfig                     0x08002365   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    TIM_OC4Init                              0x08002379   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
-    TIM_OC4PreloadConfig                     0x080023f5   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    TIM_OCStructInit                         0x0800240f   Thumb Code    20  stm32f10x_tim.o(i.TIM_OCStructInit)
-    TIM_TimeBaseInit                         0x08002425   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    TIM_TimeBaseStructInit                   0x080024c9   Thumb Code    18  stm32f10x_tim.o(i.TIM_TimeBaseStructInit)
-    Timer_Init                               0x080024dd   Thumb Code   118  timer.o(i.Timer_Init)
-    Timer_reset                              0x08002559   Thumb Code     8  timer.o(i.Timer_reset)
-    UsageFault_Handler                       0x08002565   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    check_LED_Status                         0x08002569   Thumb Code   266  led.o(i.check_LED_Status)
-    main                                     0x08002691   Thumb Code    38  main.o(i.main)
-    rand_get                                 0x080026b7   Thumb Code    20  rand.o(i.rand_get)
-    rand_init                                0x080026cd   Thumb Code    24  rand.o(i.rand_init)
-    ws2812b_H3_SendRGB                       0x080026e9   Thumb Code    18  ws2812b.o(i.ws2812b_H3_SendRGB)
-    ws2812b_H4_SendRGB                       0x08002701   Thumb Code    18  ws2812b.o(i.ws2812b_H4_SendRGB)
-    ws2812b_H6_SendRGB                       0x08002719   Thumb Code    18  ws2812b.o(i.ws2812b_H6_SendRGB)
-    ws2812b_H7_SendRGB                       0x08002731   Thumb Code    18  ws2812b.o(i.ws2812b_H7_SendRGB)
-    ws2812b_H8_SendRGB                       0x08002749   Thumb Code    18  ws2812b.o(i.ws2812b_H8_SendRGB)
-    ws2812b_Init                             0x08002761   Thumb Code   678  ws2812b.o(i.ws2812b_Init)
-    ws2812b_IsReady                          0x08002a2d   Thumb Code    44  ws2812b.o(i.ws2812b_IsReady)
-    ws2812b_SW1_SendRGB                      0x08002a71   Thumb Code    18  ws2812b.o(i.ws2812b_SW1_SendRGB)
-    TARGET_STRIKING                          0x08002b9d   Data        1024  led.o(.constdata)
-    TARGET_STRUCK_ring2                      0x08002f9d   Data        1024  led.o(.constdata)
-    TARGET_STRUCK_ring4                      0x0800339d   Data        1024  led.o(.constdata)
-    TARGET_STRUCK_ring6                      0x0800379d   Data        1024  led.o(.constdata)
-    TARGET_STRUCK_ring8                      0x08003b9d   Data        1024  led.o(.constdata)
-    TARGET_STRUCK_ring10                     0x08003f9d   Data        1024  led.o(.constdata)
-    RECTANGLE_ARROWS                         0x0800439d   Data         256  led.o(.constdata)
-    Region$$Table$$Base                      0x080044a4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080044c4   Number         0  anon$$obj.o(Region$$Table)
+    LED_Init                                 0x0800155d   Thumb Code    88  led.o(i.LED_Init)
+    LED_PackFrameData1                       0x080015cd   Thumb Code   112  led.o(i.LED_PackFrameData1)
+    LED_PackFrameData2                       0x08001645   Thumb Code   112  led.o(i.LED_PackFrameData2)
+    LED_PackLightALLData                     0x080016bd   Thumb Code    46  led.o(i.LED_PackLightALLData)
+    LED_PackRectangleData                    0x080016f9   Thumb Code   258  led.o(i.LED_PackRectangleData)
+    LED_PackStripData                        0x08001811   Thumb Code   112  led.o(i.LED_PackStripData)
+    LED_PackTargetData                       0x08001889   Thumb Code   484  led.o(i.LED_PackTargetData)
+    LED_Update                               0x08001aa1   Thumb Code   306  led.o(i.LED_Update)
+    LED_set                                  0x08001c01   Thumb Code   194  infrared.o(i.LED_set)
+    MemManage_Handler                        0x08001ce9   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
+    NMI_Handler                              0x08001ced   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
+    NVIC_Init                                0x08001cf1   Thumb Code   100  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x08001d61   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
+    PendSV_Handler                           0x08001d75   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
+    RCC_ADCCLKConfig                         0x08001d79   Thumb Code    18  stm32f10x_rcc.o(i.RCC_ADCCLKConfig)
+    RCC_AHBPeriphClockCmd                    0x08001d91   Thumb Code    26  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x08001db1   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x08001dd1   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    SVC_Handler                              0x08001e61   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x08001fb5   Thumb Code     2  stm32f10x_it.o(i.SysTick_Handler)
+    SystemInit                               0x08001fb9   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    TIM4_GetCounter                          0x08002019   Thumb Code    32  timer.o(i.TIM4_GetCounter)
+    TIM4_IRQHandler                          0x08002045   Thumb Code    76  timer.o(i.TIM4_IRQHandler)
+    TIM4_StartCounter                        0x080020a9   Thumb Code    20  timer.o(i.TIM4_StartCounter)
+    TIM_ClearFlag                            0x080020c9   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearFlag)
+    TIM_ClearITPendingBit                    0x080020cf   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearITPendingBit)
+    TIM_Cmd                                  0x080020d5   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
+    TIM_CtrlPWMOutputs                       0x080020ed   Thumb Code    30  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
+    TIM_DMACmd                               0x0800210b   Thumb Code    18  stm32f10x_tim.o(i.TIM_DMACmd)
+    TIM_GetCounter                           0x0800211d   Thumb Code     6  stm32f10x_tim.o(i.TIM_GetCounter)
+    TIM_GetITStatus                          0x08002123   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
+    TIM_ITConfig                             0x08002145   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
+    TIM_InternalClockConfig                  0x08002157   Thumb Code    12  stm32f10x_tim.o(i.TIM_InternalClockConfig)
+    TIM_OC1Init                              0x08002165   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
+    TIM_OC1PreloadConfig                     0x080021fd   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    TIM_OC2Init                              0x08002211   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
+    TIM_OC2PreloadConfig                     0x080022b5   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    TIM_OC3Init                              0x080022d1   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
+    TIM_OC3PreloadConfig                     0x08002371   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    TIM_OC4Init                              0x08002385   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
+    TIM_OC4PreloadConfig                     0x08002401   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    TIM_OCStructInit                         0x0800241b   Thumb Code    20  stm32f10x_tim.o(i.TIM_OCStructInit)
+    TIM_TimeBaseInit                         0x08002431   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    TIM_TimeBaseStructInit                   0x080024d5   Thumb Code    18  stm32f10x_tim.o(i.TIM_TimeBaseStructInit)
+    Timer_Init                               0x080024e9   Thumb Code   118  timer.o(i.Timer_Init)
+    Timer_reset                              0x08002565   Thumb Code     8  timer.o(i.Timer_reset)
+    UsageFault_Handler                       0x08002571   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
+    check_LED_Status                         0x08002575   Thumb Code   266  led.o(i.check_LED_Status)
+    main                                     0x0800269d   Thumb Code    38  main.o(i.main)
+    rand_get                                 0x080026c3   Thumb Code    20  rand.o(i.rand_get)
+    rand_init                                0x080026d9   Thumb Code    24  rand.o(i.rand_init)
+    ws2812b_H3_SendRGB                       0x080026f5   Thumb Code    18  ws2812b.o(i.ws2812b_H3_SendRGB)
+    ws2812b_H4_SendRGB                       0x0800270d   Thumb Code    18  ws2812b.o(i.ws2812b_H4_SendRGB)
+    ws2812b_H6_SendRGB                       0x08002725   Thumb Code    18  ws2812b.o(i.ws2812b_H6_SendRGB)
+    ws2812b_H7_SendRGB                       0x0800273d   Thumb Code    18  ws2812b.o(i.ws2812b_H7_SendRGB)
+    ws2812b_H8_SendRGB                       0x08002755   Thumb Code    18  ws2812b.o(i.ws2812b_H8_SendRGB)
+    ws2812b_Init                             0x0800276d   Thumb Code   678  ws2812b.o(i.ws2812b_Init)
+    ws2812b_IsReady                          0x08002a39   Thumb Code    44  ws2812b.o(i.ws2812b_IsReady)
+    ws2812b_SW1_SendRGB                      0x08002a7d   Thumb Code    18  ws2812b.o(i.ws2812b_SW1_SendRGB)
+    TARGET_STRIKING                          0x08002ba9   Data        1024  led.o(.constdata)
+    TARGET_STRUCK_ring2                      0x08002fa9   Data        1024  led.o(.constdata)
+    TARGET_STRUCK_ring4                      0x080033a9   Data        1024  led.o(.constdata)
+    TARGET_STRUCK_ring6                      0x080037a9   Data        1024  led.o(.constdata)
+    TARGET_STRUCK_ring8                      0x08003ba9   Data        1024  led.o(.constdata)
+    TARGET_STRUCK_ring10                     0x08003fa9   Data        1024  led.o(.constdata)
+    RECTANGLE_ARROWS                         0x080043a9   Data         256  led.o(.constdata)
+    Region$$Table$$Base                      0x080044b0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080044d0   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f10x.o(.data)
     systime_ms                               0x20000014   Data           4  timer.o(.data)
@@ -1524,9 +1525,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004538, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004544, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000044c4, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000044d0, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1647,107 +1648,107 @@ Memory Map of the image
     0x08001544   0x08001544   0x00000004   Code   RO         3331    i.HardFault_Handler  stm32f10x_it.o
     0x08001548   0x08001548   0x00000008   Code   RO         3713    i.IR_Init           infrared.o
     0x08001550   0x08001550   0x0000000c   Code   RO         3425    i.LEDGamma          ws2812b.o
-    0x0800155c   0x0800155c   0x00000064   Code   RO         3631    i.LED_Init          led.o
-    0x080015c0   0x080015c0   0x00000078   Code   RO         3632    i.LED_PackFrameData1  led.o
-    0x08001638   0x08001638   0x00000078   Code   RO         3633    i.LED_PackFrameData2  led.o
-    0x080016b0   0x080016b0   0x0000003c   Code   RO         3634    i.LED_PackLightALLData  led.o
-    0x080016ec   0x080016ec   0x00000118   Code   RO         3635    i.LED_PackRectangleData  led.o
-    0x08001804   0x08001804   0x00000078   Code   RO         3636    i.LED_PackStripData  led.o
-    0x0800187c   0x0800187c   0x00000218   Code   RO         3637    i.LED_PackTargetData  led.o
-    0x08001a94   0x08001a94   0x00000160   Code   RO         3638    i.LED_Update        led.o
-    0x08001bf4   0x08001bf4   0x000000e8   Code   RO         3714    i.LED_set           infrared.o
-    0x08001cdc   0x08001cdc   0x00000004   Code   RO         3332    i.MemManage_Handler  stm32f10x_it.o
-    0x08001ce0   0x08001ce0   0x00000002   Code   RO         3333    i.NMI_Handler       stm32f10x_it.o
-    0x08001ce2   0x08001ce2   0x00000002   PAD
-    0x08001ce4   0x08001ce4   0x00000070   Code   RO          137    i.NVIC_Init         misc.o
-    0x08001d54   0x08001d54   0x00000014   Code   RO          138    i.NVIC_PriorityGroupConfig  misc.o
-    0x08001d68   0x08001d68   0x00000002   Code   RO         3334    i.PendSV_Handler    stm32f10x_it.o
-    0x08001d6a   0x08001d6a   0x00000002   PAD
-    0x08001d6c   0x08001d6c   0x00000018   Code   RO         1773    i.RCC_ADCCLKConfig  stm32f10x_rcc.o
-    0x08001d84   0x08001d84   0x00000020   Code   RO         1774    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
-    0x08001da4   0x08001da4   0x00000020   Code   RO         1775    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x08001dc4   0x08001dc4   0x00000020   Code   RO         1777    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08001de4   0x08001de4   0x00000070   Code   RO         3426    i.RGB2PWM           ws2812b.o
-    0x08001e54   0x08001e54   0x00000002   Code   RO         3335    i.SVC_Handler       stm32f10x_it.o
-    0x08001e56   0x08001e56   0x00000008   Code   RO           24    i.SetSysClock       system_stm32f10x.o
-    0x08001e5e   0x08001e5e   0x00000002   PAD
-    0x08001e60   0x08001e60   0x000000e0   Code   RO           25    i.SetSysClockTo72   system_stm32f10x.o
-    0x08001f40   0x08001f40   0x00000028   Code   RO         3428    i.SrcFilterNull     ws2812b.o
-    0x08001f68   0x08001f68   0x00000040   Code   RO         3429    i.SrcFilterRGB      ws2812b.o
-    0x08001fa8   0x08001fa8   0x00000002   Code   RO         3336    i.SysTick_Handler   stm32f10x_it.o
-    0x08001faa   0x08001faa   0x00000002   PAD
-    0x08001fac   0x08001fac   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
-    0x0800200c   0x0800200c   0x0000002c   Code   RO         3220    i.TIM4_GetCounter   timer.o
-    0x08002038   0x08002038   0x00000064   Code   RO         3221    i.TIM4_IRQHandler   timer.o
-    0x0800209c   0x0800209c   0x00000020   Code   RO         3222    i.TIM4_StartCounter  timer.o
-    0x080020bc   0x080020bc   0x00000006   Code   RO         2415    i.TIM_ClearFlag     stm32f10x_tim.o
-    0x080020c2   0x080020c2   0x00000006   Code   RO         2416    i.TIM_ClearITPendingBit  stm32f10x_tim.o
-    0x080020c8   0x080020c8   0x00000018   Code   RO         2421    i.TIM_Cmd           stm32f10x_tim.o
-    0x080020e0   0x080020e0   0x0000001e   Code   RO         2423    i.TIM_CtrlPWMOutputs  stm32f10x_tim.o
-    0x080020fe   0x080020fe   0x00000012   Code   RO         2424    i.TIM_DMACmd        stm32f10x_tim.o
-    0x08002110   0x08002110   0x00000006   Code   RO         2440    i.TIM_GetCounter    stm32f10x_tim.o
-    0x08002116   0x08002116   0x00000022   Code   RO         2442    i.TIM_GetITStatus   stm32f10x_tim.o
-    0x08002138   0x08002138   0x00000012   Code   RO         2446    i.TIM_ITConfig      stm32f10x_tim.o
-    0x0800214a   0x0800214a   0x0000000c   Code   RO         2448    i.TIM_InternalClockConfig  stm32f10x_tim.o
-    0x08002156   0x08002156   0x00000002   PAD
-    0x08002158   0x08002158   0x00000098   Code   RO         2450    i.TIM_OC1Init       stm32f10x_tim.o
-    0x080021f0   0x080021f0   0x00000012   Code   RO         2453    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
-    0x08002202   0x08002202   0x00000002   PAD
-    0x08002204   0x08002204   0x000000a4   Code   RO         2455    i.TIM_OC2Init       stm32f10x_tim.o
-    0x080022a8   0x080022a8   0x0000001a   Code   RO         2458    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
-    0x080022c2   0x080022c2   0x00000002   PAD
-    0x080022c4   0x080022c4   0x000000a0   Code   RO         2460    i.TIM_OC3Init       stm32f10x_tim.o
-    0x08002364   0x08002364   0x00000012   Code   RO         2463    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
-    0x08002376   0x08002376   0x00000002   PAD
-    0x08002378   0x08002378   0x0000007c   Code   RO         2465    i.TIM_OC4Init       stm32f10x_tim.o
-    0x080023f4   0x080023f4   0x0000001a   Code   RO         2467    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
-    0x0800240e   0x0800240e   0x00000014   Code   RO         2468    i.TIM_OCStructInit  stm32f10x_tim.o
-    0x08002422   0x08002422   0x00000002   PAD
-    0x08002424   0x08002424   0x000000a4   Code   RO         2492    i.TIM_TimeBaseInit  stm32f10x_tim.o
-    0x080024c8   0x080024c8   0x00000012   Code   RO         2493    i.TIM_TimeBaseStructInit  stm32f10x_tim.o
-    0x080024da   0x080024da   0x00000002   PAD
-    0x080024dc   0x080024dc   0x0000007c   Code   RO         3223    i.Timer_Init        timer.o
-    0x08002558   0x08002558   0x0000000c   Code   RO         3224    i.Timer_reset       timer.o
-    0x08002564   0x08002564   0x00000004   Code   RO         3337    i.UsageFault_Handler  stm32f10x_it.o
-    0x08002568   0x08002568   0x00000128   Code   RO         3639    i.check_LED_Status  led.o
-    0x08002690   0x08002690   0x00000026   Code   RO         3299    i.main              main.o
-    0x080026b6   0x080026b6   0x00000014   Code   RO         3262    i.rand_get          rand.o
-    0x080026ca   0x080026ca   0x00000002   PAD
-    0x080026cc   0x080026cc   0x0000001c   Code   RO         3263    i.rand_init         rand.o
-    0x080026e8   0x080026e8   0x00000018   Code   RO         3431    i.ws2812b_H3_SendRGB  ws2812b.o
-    0x08002700   0x08002700   0x00000018   Code   RO         3433    i.ws2812b_H4_SendRGB  ws2812b.o
-    0x08002718   0x08002718   0x00000018   Code   RO         3435    i.ws2812b_H6_SendRGB  ws2812b.o
-    0x08002730   0x08002730   0x00000018   Code   RO         3437    i.ws2812b_H7_SendRGB  ws2812b.o
-    0x08002748   0x08002748   0x00000018   Code   RO         3439    i.ws2812b_H8_SendRGB  ws2812b.o
-    0x08002760   0x08002760   0x000002cc   Code   RO         3440    i.ws2812b_Init      ws2812b.o
-    0x08002a2c   0x08002a2c   0x00000044   Code   RO         3613    i.ws2812b_IsReady   ws2812b.o
-    0x08002a70   0x08002a70   0x00000018   Code   RO         3442    i.ws2812b_SW1_SendRGB  ws2812b.o
-    0x08002a88   0x08002a88   0x00000100   Data   RO         3444    .constdata          ws2812b.o
-    0x08002b88   0x08002b88   0x00001915   Data   RO         3641    .constdata          led.o
-    0x0800449d   0x0800449d   0x00000006   Data   RO         3715    .constdata          infrared.o
-    0x080044a3   0x080044a3   0x00000001   PAD
-    0x080044a4   0x080044a4   0x00000020   Data   RO         3952    Region$$Table       anon$$obj.o
+    0x0800155c   0x0800155c   0x00000070   Code   RO         3631    i.LED_Init          led.o
+    0x080015cc   0x080015cc   0x00000078   Code   RO         3632    i.LED_PackFrameData1  led.o
+    0x08001644   0x08001644   0x00000078   Code   RO         3633    i.LED_PackFrameData2  led.o
+    0x080016bc   0x080016bc   0x0000003c   Code   RO         3634    i.LED_PackLightALLData  led.o
+    0x080016f8   0x080016f8   0x00000118   Code   RO         3635    i.LED_PackRectangleData  led.o
+    0x08001810   0x08001810   0x00000078   Code   RO         3636    i.LED_PackStripData  led.o
+    0x08001888   0x08001888   0x00000218   Code   RO         3637    i.LED_PackTargetData  led.o
+    0x08001aa0   0x08001aa0   0x00000160   Code   RO         3638    i.LED_Update        led.o
+    0x08001c00   0x08001c00   0x000000e8   Code   RO         3714    i.LED_set           infrared.o
+    0x08001ce8   0x08001ce8   0x00000004   Code   RO         3332    i.MemManage_Handler  stm32f10x_it.o
+    0x08001cec   0x08001cec   0x00000002   Code   RO         3333    i.NMI_Handler       stm32f10x_it.o
+    0x08001cee   0x08001cee   0x00000002   PAD
+    0x08001cf0   0x08001cf0   0x00000070   Code   RO          137    i.NVIC_Init         misc.o
+    0x08001d60   0x08001d60   0x00000014   Code   RO          138    i.NVIC_PriorityGroupConfig  misc.o
+    0x08001d74   0x08001d74   0x00000002   Code   RO         3334    i.PendSV_Handler    stm32f10x_it.o
+    0x08001d76   0x08001d76   0x00000002   PAD
+    0x08001d78   0x08001d78   0x00000018   Code   RO         1773    i.RCC_ADCCLKConfig  stm32f10x_rcc.o
+    0x08001d90   0x08001d90   0x00000020   Code   RO         1774    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
+    0x08001db0   0x08001db0   0x00000020   Code   RO         1775    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x08001dd0   0x08001dd0   0x00000020   Code   RO         1777    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08001df0   0x08001df0   0x00000070   Code   RO         3426    i.RGB2PWM           ws2812b.o
+    0x08001e60   0x08001e60   0x00000002   Code   RO         3335    i.SVC_Handler       stm32f10x_it.o
+    0x08001e62   0x08001e62   0x00000008   Code   RO           24    i.SetSysClock       system_stm32f10x.o
+    0x08001e6a   0x08001e6a   0x00000002   PAD
+    0x08001e6c   0x08001e6c   0x000000e0   Code   RO           25    i.SetSysClockTo72   system_stm32f10x.o
+    0x08001f4c   0x08001f4c   0x00000028   Code   RO         3428    i.SrcFilterNull     ws2812b.o
+    0x08001f74   0x08001f74   0x00000040   Code   RO         3429    i.SrcFilterRGB      ws2812b.o
+    0x08001fb4   0x08001fb4   0x00000002   Code   RO         3336    i.SysTick_Handler   stm32f10x_it.o
+    0x08001fb6   0x08001fb6   0x00000002   PAD
+    0x08001fb8   0x08001fb8   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
+    0x08002018   0x08002018   0x0000002c   Code   RO         3220    i.TIM4_GetCounter   timer.o
+    0x08002044   0x08002044   0x00000064   Code   RO         3221    i.TIM4_IRQHandler   timer.o
+    0x080020a8   0x080020a8   0x00000020   Code   RO         3222    i.TIM4_StartCounter  timer.o
+    0x080020c8   0x080020c8   0x00000006   Code   RO         2415    i.TIM_ClearFlag     stm32f10x_tim.o
+    0x080020ce   0x080020ce   0x00000006   Code   RO         2416    i.TIM_ClearITPendingBit  stm32f10x_tim.o
+    0x080020d4   0x080020d4   0x00000018   Code   RO         2421    i.TIM_Cmd           stm32f10x_tim.o
+    0x080020ec   0x080020ec   0x0000001e   Code   RO         2423    i.TIM_CtrlPWMOutputs  stm32f10x_tim.o
+    0x0800210a   0x0800210a   0x00000012   Code   RO         2424    i.TIM_DMACmd        stm32f10x_tim.o
+    0x0800211c   0x0800211c   0x00000006   Code   RO         2440    i.TIM_GetCounter    stm32f10x_tim.o
+    0x08002122   0x08002122   0x00000022   Code   RO         2442    i.TIM_GetITStatus   stm32f10x_tim.o
+    0x08002144   0x08002144   0x00000012   Code   RO         2446    i.TIM_ITConfig      stm32f10x_tim.o
+    0x08002156   0x08002156   0x0000000c   Code   RO         2448    i.TIM_InternalClockConfig  stm32f10x_tim.o
+    0x08002162   0x08002162   0x00000002   PAD
+    0x08002164   0x08002164   0x00000098   Code   RO         2450    i.TIM_OC1Init       stm32f10x_tim.o
+    0x080021fc   0x080021fc   0x00000012   Code   RO         2453    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
+    0x0800220e   0x0800220e   0x00000002   PAD
+    0x08002210   0x08002210   0x000000a4   Code   RO         2455    i.TIM_OC2Init       stm32f10x_tim.o
+    0x080022b4   0x080022b4   0x0000001a   Code   RO         2458    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
+    0x080022ce   0x080022ce   0x00000002   PAD
+    0x080022d0   0x080022d0   0x000000a0   Code   RO         2460    i.TIM_OC3Init       stm32f10x_tim.o
+    0x08002370   0x08002370   0x00000012   Code   RO         2463    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
+    0x08002382   0x08002382   0x00000002   PAD
+    0x08002384   0x08002384   0x0000007c   Code   RO         2465    i.TIM_OC4Init       stm32f10x_tim.o
+    0x08002400   0x08002400   0x0000001a   Code   RO         2467    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
+    0x0800241a   0x0800241a   0x00000014   Code   RO         2468    i.TIM_OCStructInit  stm32f10x_tim.o
+    0x0800242e   0x0800242e   0x00000002   PAD
+    0x08002430   0x08002430   0x000000a4   Code   RO         2492    i.TIM_TimeBaseInit  stm32f10x_tim.o
+    0x080024d4   0x080024d4   0x00000012   Code   RO         2493    i.TIM_TimeBaseStructInit  stm32f10x_tim.o
+    0x080024e6   0x080024e6   0x00000002   PAD
+    0x080024e8   0x080024e8   0x0000007c   Code   RO         3223    i.Timer_Init        timer.o
+    0x08002564   0x08002564   0x0000000c   Code   RO         3224    i.Timer_reset       timer.o
+    0x08002570   0x08002570   0x00000004   Code   RO         3337    i.UsageFault_Handler  stm32f10x_it.o
+    0x08002574   0x08002574   0x00000128   Code   RO         3639    i.check_LED_Status  led.o
+    0x0800269c   0x0800269c   0x00000026   Code   RO         3299    i.main              main.o
+    0x080026c2   0x080026c2   0x00000014   Code   RO         3262    i.rand_get          rand.o
+    0x080026d6   0x080026d6   0x00000002   PAD
+    0x080026d8   0x080026d8   0x0000001c   Code   RO         3263    i.rand_init         rand.o
+    0x080026f4   0x080026f4   0x00000018   Code   RO         3431    i.ws2812b_H3_SendRGB  ws2812b.o
+    0x0800270c   0x0800270c   0x00000018   Code   RO         3433    i.ws2812b_H4_SendRGB  ws2812b.o
+    0x08002724   0x08002724   0x00000018   Code   RO         3435    i.ws2812b_H6_SendRGB  ws2812b.o
+    0x0800273c   0x0800273c   0x00000018   Code   RO         3437    i.ws2812b_H7_SendRGB  ws2812b.o
+    0x08002754   0x08002754   0x00000018   Code   RO         3439    i.ws2812b_H8_SendRGB  ws2812b.o
+    0x0800276c   0x0800276c   0x000002cc   Code   RO         3440    i.ws2812b_Init      ws2812b.o
+    0x08002a38   0x08002a38   0x00000044   Code   RO         3613    i.ws2812b_IsReady   ws2812b.o
+    0x08002a7c   0x08002a7c   0x00000018   Code   RO         3442    i.ws2812b_SW1_SendRGB  ws2812b.o
+    0x08002a94   0x08002a94   0x00000100   Data   RO         3444    .constdata          ws2812b.o
+    0x08002b94   0x08002b94   0x00001915   Data   RO         3641    .constdata          led.o
+    0x080044a9   0x080044a9   0x00000006   Data   RO         3715    .constdata          infrared.o
+    0x080044af   0x080044af   0x00000001   PAD
+    0x080044b0   0x080044b0   0x00000020   Data   RO         3952    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080044c4, Size: 0x00002650, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080044d0, Size: 0x00002650, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080044c4   0x00000014   Data   RW           28    .data               system_stm32f10x.o
-    0x20000014   0x080044d8   0x00000008   Data   RW         3225    .data               timer.o
-    0x2000001c   0x080044e0   0x00000002   Data   RW         3264    .data               rand.o
-    0x2000001e   0x080044e2   0x00000002   PAD
-    0x20000020   0x080044e4   0x00000024   Data   RW         3445    .data               ws2812b.o
-    0x20000044   0x08004508   0x0000001d   Data   RW         3642    .data               led.o
-    0x20000061   0x08004525   0x00000001   PAD
-    0x20000062   0x08004526   0x00000010   Data   RW         3716    .data               infrared.o
-    0x20000072   0x08004536   0x00000002   PAD
+    0x20000000   0x080044d0   0x00000014   Data   RW           28    .data               system_stm32f10x.o
+    0x20000014   0x080044e4   0x00000008   Data   RW         3225    .data               timer.o
+    0x2000001c   0x080044ec   0x00000002   Data   RW         3264    .data               rand.o
+    0x2000001e   0x080044ee   0x00000002   PAD
+    0x20000020   0x080044f0   0x00000024   Data   RW         3445    .data               ws2812b.o
+    0x20000044   0x08004514   0x0000001d   Data   RW         3642    .data               led.o
+    0x20000061   0x08004531   0x00000001   PAD
+    0x20000062   0x08004532   0x00000010   Data   RW         3716    .data               infrared.o
+    0x20000072   0x08004542   0x00000002   PAD
     0x20000074        -       0x00000b40   Zero   RW         3443    .bss                ws2812b.o
     0x20000bb4        -       0x00001353   Zero   RW         3640    .bss                led.o
-    0x20001f07   0x08004536   0x00000001   PAD
+    0x20001f07   0x08004542   0x00000001   PAD
     0x20001f08        -       0x000000e4   Zero   RW         3786    .bss                c_w.l(rand.o)
     0x20001fec        -       0x00000060   Zero   RW         3879    .bss                c_w.l(libspace.o)
-    0x2000204c   0x08004536   0x00000004   PAD
+    0x2000204c   0x08004542   0x00000004   PAD
     0x20002050        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
     0x20002250        -       0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
 
@@ -1763,7 +1764,7 @@ Image component sizes
          0          0          0          0          0       4532   core_cm3.o
         70          0          0          0          0       1002   delay.o
        828         88          6         16          0       4431   infrared.o
-      1984        216       6421         29       4947       9787   led.o
+      1996        218       6421         29       4947       9795   led.o
         38          0          0          0          0        479   main.o
        132         22          0          0          0     216315   misc.o
        244         18          0          2          0       2358   rand.o
@@ -1780,7 +1781,7 @@ Image component sizes
       3724        468        256         36       2880      21214   ws2812b.o
 
     ----------------------------------------------------------------------
-     10112       1090       6952        116       9364     395845   Object Totals
+     10124       1092       6952        116       9364     395853   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          1          5          1          0   (incl. Padding)
 
@@ -1832,15 +1833,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     10652       1124       6952        116       9692     390493   Grand Totals
-     10652       1124       6952        116       9692     390493   ELF Image Totals
-     10652       1124       6952        116          0          0   ROM Totals
+     10664       1126       6952        116       9692     390501   Grand Totals
+     10664       1126       6952        116       9692     390501   ELF Image Totals
+     10664       1126       6952        116          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                17604 (  17.19kB)
+    Total RO  Size (Code + RO Data)                17616 (  17.20kB)
     Total RW  Size (RW Data + ZI Data)              9808 (   9.58kB)
-    Total ROM Size (Code + RO Data + RW Data)      17720 (  17.30kB)
+    Total ROM Size (Code + RO Data + RW Data)      17732 (  17.32kB)
 
 ==============================================================================
 

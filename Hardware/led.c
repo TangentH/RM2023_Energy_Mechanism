@@ -29,6 +29,7 @@ void LED_Init(LED_State_t state)
     ws2812b_Init();
     LED_State = state;
     current_color = (LED_State == RedState ? red : blue);
+	current_striking_leaf= (LED_Leaf_Name_t) rand_get(5);
 
     //pack R logo data
     for (uint8_t i = 0; i < 64; i++)

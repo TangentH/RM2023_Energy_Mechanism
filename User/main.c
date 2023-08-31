@@ -8,8 +8,8 @@
 int main(void)
 {
 	IR_Init();
-	LED_Init(RedState);	
 	rand_init();
+	LED_Init(RedState);	
 	while (1)
 	{
 		Delay_ms(100);

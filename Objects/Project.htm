@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Aug 31 17:04:22 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Aug 31 17:46:19 2023
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -233,7 +233,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a5]"></a>rand</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, rand.o(.emb_text))
-<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
+<BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
 </UL>
 
 <P><STRONG><a name="[3]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
@@ -367,7 +367,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_rand_2
 </UL>
 
-<P><STRONG><a name="[98]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
+<P><STRONG><a name="[99]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 </UL>
 
@@ -698,66 +698,67 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[82]"></a>LED_Init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, led.o(i.LED_Init))
+<P><STRONG><a name="[82]"></a>LED_Init</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, led.o(i.LED_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = LED_Init &rArr; ws2812b_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8b]"></a>LED_PackFrameData1</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackFrameData1))
+<P><STRONG><a name="[8c]"></a>LED_PackFrameData1</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackFrameData1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LED_PackFrameData1
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[8d]"></a>LED_PackFrameData2</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackFrameData2))
+<P><STRONG><a name="[8e]"></a>LED_PackFrameData2</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackFrameData2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LED_PackFrameData2
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[88]"></a>LED_PackLightALLData</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, led.o(i.LED_PackLightALLData))
-<BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<P><STRONG><a name="[89]"></a>LED_PackLightALLData</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, led.o(i.LED_PackLightALLData))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[89]"></a>LED_PackRectangleData</STRONG> (Thumb, 258 bytes, Stack size 12 bytes, led.o(i.LED_PackRectangleData))
+<P><STRONG><a name="[8a]"></a>LED_PackRectangleData</STRONG> (Thumb, 258 bytes, Stack size 12 bytes, led.o(i.LED_PackRectangleData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LED_PackRectangleData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[8a]"></a>LED_PackStripData</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackStripData))
+<P><STRONG><a name="[8b]"></a>LED_PackStripData</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, led.o(i.LED_PackStripData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LED_PackStripData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[8c]"></a>LED_PackTargetData</STRONG> (Thumb, 484 bytes, Stack size 12 bytes, led.o(i.LED_PackTargetData))
+<P><STRONG><a name="[8d]"></a>LED_PackTargetData</STRONG> (Thumb, 484 bytes, Stack size 12 bytes, led.o(i.LED_PackTargetData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LED_PackTargetData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[85]"></a>LED_Update</STRONG> (Thumb, 306 bytes, Stack size 8 bytes, led.o(i.LED_Update))
+<P><STRONG><a name="[86]"></a>LED_Update</STRONG> (Thumb, 306 bytes, Stack size 8 bytes, led.o(i.LED_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LED_Update &rArr; ws2812b_SW1_SendRGB &rArr; DMA1_CH5Send &rArr; SrcFilterNull
 </UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackTargetData
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackStripData
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackRectangleData
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackLightALLData
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData2
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData1
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_SW1_SendRGB
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H8_SendRGB
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H7_SendRGB
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H6_SendRGB
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H4_SendRGB
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H3_SendRGB
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackTargetData
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackStripData
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackRectangleData
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackLightALLData
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData2
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_PackFrameData1
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_SW1_SendRGB
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H8_SendRGB
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H7_SendRGB
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H6_SendRGB
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H4_SendRGB
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H3_SendRGB
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -780,7 +781,7 @@ Global Symbols
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 
-<P><STRONG><a name="[a2]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
+<P><STRONG><a name="[a3]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 
@@ -795,7 +796,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
+<P><STRONG><a name="[9e]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
@@ -815,14 +816,14 @@ Global Symbols
 <P><STRONG><a name="[38]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[7a]"></a>TIM4_GetCounter</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, timer.o(i.TIM4_GetCounter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM4_GetCounter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
@@ -830,25 +831,25 @@ Global Symbols
 <P><STRONG><a name="[2b]"></a>TIM4_IRQHandler</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, timer.o(i.TIM4_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM4_IRQHandler &rArr; TIM_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_reset
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_reset
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[79]"></a>TIM4_StartCounter</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, timer.o(i.TIM4_StartCounter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM4_StartCounter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a0]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearFlag))
+<P><STRONG><a name="[a1]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearFlag))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 
-<P><STRONG><a name="[9c]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[9d]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
@@ -877,22 +878,22 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
 </UL>
 
-<P><STRONG><a name="[99]"></a>TIM_GetCounter</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetCounter))
+<P><STRONG><a name="[9a]"></a>TIM_GetCounter</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetCounter))
 <BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_StartCounter
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_GetCounter
 </UL>
 
-<P><STRONG><a name="[9a]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[9b]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a1]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
+<P><STRONG><a name="[a2]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>TIM_InternalClockConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_InternalClockConfig))
+<P><STRONG><a name="[9f]"></a>TIM_InternalClockConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_InternalClockConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
 
@@ -940,7 +941,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
 </UL>
 
-<P><STRONG><a name="[9f]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_TimeBaseInit))
+<P><STRONG><a name="[a0]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_TimeBaseInit))
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_Init
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 </UL>
@@ -952,40 +953,40 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>Timer_Init</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, timer.o(i.Timer_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Timer_Init &rArr; NVIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_InternalClockConfig
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_InternalClockConfig
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Timer_reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, timer.o(i.Timer_reset))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<P><STRONG><a name="[9c]"></a>Timer_reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, timer.o(i.Timer_reset))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[8]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[87]"></a>check_LED_Status</STRONG> (Thumb, 266 bytes, Stack size 8 bytes, led.o(i.check_LED_Status))
+<P><STRONG><a name="[88]"></a>check_LED_Status</STRONG> (Thumb, 266 bytes, Stack size 8 bytes, led.o(i.check_LED_Status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = check_LED_Status &rArr; rand_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_reset
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_get
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
 <P><STRONG><a name="[47]"></a>main</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; LED_Init &rArr; ws2812b_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_IsReady
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IR_Init
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand_init
@@ -994,12 +995,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[a3]"></a>rand_get</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, rand.o(i.rand_get))
+<P><STRONG><a name="[85]"></a>rand_get</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, rand.o(i.rand_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = rand_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_LED_Status
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
 <P><STRONG><a name="[a4]"></a>rand_init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, rand.o(i.rand_init))
@@ -1012,44 +1014,44 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>ws2812b_H3_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H3_SendRGB))
+<P><STRONG><a name="[8f]"></a>ws2812b_H3_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H3_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_H3_SendRGB &rArr; DMA1_CH7Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH7Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[8f]"></a>ws2812b_H4_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H4_SendRGB))
+<P><STRONG><a name="[90]"></a>ws2812b_H4_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H4_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_H4_SendRGB &rArr; DMA1_CH1Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH1Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[90]"></a>ws2812b_H6_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H6_SendRGB))
+<P><STRONG><a name="[91]"></a>ws2812b_H6_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H6_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_H6_SendRGB &rArr; DMA1_CH6Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH6Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[91]"></a>ws2812b_H7_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H7_SendRGB))
+<P><STRONG><a name="[92]"></a>ws2812b_H7_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H7_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_H7_SendRGB &rArr; DMA1_CH3Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH3Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
-<P><STRONG><a name="[92]"></a>ws2812b_H8_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H8_SendRGB))
+<P><STRONG><a name="[93]"></a>ws2812b_H8_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_H8_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_H8_SendRGB &rArr; DMA1_CH2Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH2Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 
 <P><STRONG><a name="[84]"></a>ws2812b_Init</STRONG> (Thumb, 678 bytes, Stack size 88 bytes, ws2812b.o(i.ws2812b_Init))
@@ -1062,10 +1064,10 @@ Global Symbols
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ITConfig
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseStructInit
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OCStructInit
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
@@ -1080,34 +1082,34 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
-<P><STRONG><a name="[86]"></a>ws2812b_IsReady</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ws2812b.o(i.ws2812b_IsReady))
-<BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<P><STRONG><a name="[87]"></a>ws2812b_IsReady</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ws2812b.o(i.ws2812b_IsReady))
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[93]"></a>ws2812b_SW1_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_SW1_SendRGB))
+<P><STRONG><a name="[94]"></a>ws2812b_SW1_SendRGB</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, ws2812b.o(i.ws2812b_SW1_SendRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ws2812b_SW1_SendRGB &rArr; DMA1_CH5Send &rArr; SrcFilterNull
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH5Send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Update
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[96]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
+<P><STRONG><a name="[97]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[97]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[98]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 
 <P><STRONG><a name="[62]"></a>DMA1_CH1Send</STRONG> (Thumb, 162 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH1Send))
@@ -1118,7 +1120,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H4_SendRGB
+<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H4_SendRGB
 </UL>
 
 <P><STRONG><a name="[67]"></a>DMA1_CH1SendNext</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH1SendNext))
@@ -1140,7 +1142,7 @@ Local Symbols
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CtrlPWMOutputs
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H8_SendRGB
+<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H8_SendRGB
 </UL>
 
 <P><STRONG><a name="[6a]"></a>DMA1_CH2SendNext</STRONG> (Thumb, 154 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH2SendNext))
@@ -1162,7 +1164,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H7_SendRGB
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H7_SendRGB
 </UL>
 
 <P><STRONG><a name="[6c]"></a>DMA1_CH3SendNext</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH3SendNext))
@@ -1183,7 +1185,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_SW1_SendRGB
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_SW1_SendRGB
 </UL>
 
 <P><STRONG><a name="[6e]"></a>DMA1_CH5SendNext</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH5SendNext))
@@ -1204,7 +1206,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H6_SendRGB
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H6_SendRGB
 </UL>
 
 <P><STRONG><a name="[70]"></a>DMA1_CH6SendNext</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH6SendNext))
@@ -1225,7 +1227,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterNull
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H3_SendRGB
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ws2812b_H3_SendRGB
 </UL>
 
 <P><STRONG><a name="[72]"></a>DMA1_CH7SendNext</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, ws2812b.o(i.DMA1_CH7SendNext))
@@ -1238,14 +1240,14 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel7_IRQHandler
 </UL>
 
-<P><STRONG><a name="[95]"></a>LEDGamma</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ws2812b.o(i.LEDGamma))
-<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB2PWM
+<P><STRONG><a name="[96]"></a>LEDGamma</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ws2812b.o(i.LEDGamma))
+<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB2PWM
 </UL>
 
-<P><STRONG><a name="[94]"></a>RGB2PWM</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, ws2812b.o(i.RGB2PWM))
+<P><STRONG><a name="[95]"></a>RGB2PWM</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, ws2812b.o(i.RGB2PWM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = RGB2PWM
 </UL>
-<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDGamma
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDGamma
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SrcFilterRGB
 </UL>
@@ -1253,7 +1255,7 @@ Local Symbols
 <P><STRONG><a name="[63]"></a>SrcFilterNull</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, ws2812b.o(i.SrcFilterNull))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SrcFilterNull
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH7SendNext
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_CH7Send
@@ -1272,7 +1274,7 @@ Local Symbols
 <P><STRONG><a name="[3a]"></a>SrcFilterRGB</STRONG> (Thumb, 64 bytes, Stack size 32 bytes, ws2812b.o(i.SrcFilterRGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = SrcFilterRGB &rArr; RGB2PWM
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB2PWM
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB2PWM
 </UL>
 <BR>[Address Reference Count : 6]<UL><LI> ws2812b.o(i.ws2812b_H3_SendRGB)
 <LI> ws2812b.o(i.ws2812b_H4_SendRGB)
