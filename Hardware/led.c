@@ -18,7 +18,7 @@ RGB_t current_color = {0, 0, 0}; //变量，表示这片叶子亮哪方的颜色
 
 
 LED_State_t LED_State = RedState; //能量机关默认为红方模式
-uint8_t currentLeafStruck = 0;· //当前叶子是否击中了
+uint8_t currentLeafStruck = 0; //当前叶子是否击中了
 LED_Leaf_Name_t current_striking_leaf = LEAF_0; //当前击打的扇叶
 uint8_t total_struck = 0; //总共击打的次数
 
